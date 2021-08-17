@@ -1,20 +1,3 @@
-# JavaScript Features
-1. JS FOundations
-    - Variable Declarations
-        - Variable Scope
-    - DataTypes
-        - Methods for DataTypes
-        - Number, consist of integer and Floating Point
-        - String
-            - This is a character enclosed in '' or ""
-        - Date
-            - The Standard Predefined Object of JavaScript to show dateand time based on culture of the browser
-        - Boolean
-        - Object
-            - Array
-            - Date
-            - Object Literal aka JSON Object 
-``` javascript
 // declare a variable. The 'var' is a keyword used to declare a variable
 // default datatype of the variable, if not assigned with default value, will be 'any'
 // typeof() is an Operator
@@ -63,6 +46,3 @@ x = [10,20,10.3,45.7, 'A', 'B', 'C', {id:9,name:'SSD'}, [4,5,67]];
 console.log('Type of x = ' + typeof(x) + ' Value of x =' + x);
 
 
-
-```
-    - Writing Simple Functions    
