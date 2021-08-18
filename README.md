@@ -121,4 +121,59 @@ function processData(x,y){
 ```
 
 
+- JavaScript W.r.t. Browser
+    - Native Language of the Browser
+        - JavaScript Object Model to Access
+            - Browser's Runtime and Parsing Service to execute JS Code
+                - Pase each Statement of JS Code and if its is valid execute it and Proced to next statement 
+      
+        - The 'Object' in JS that represents the Schema (aka properties) and value of the Schema
+            - It represents a data member of the JS Code that stores data
+            - It is Complex object that contains methods
+                - Number
+                - String
+                - Array
+                    - The Only Official Collection in JavaSCript 
+                - Date
+                - Literal aka {}    
+        - In JS everything is an Object        
+        - Manage HTML DOM Property System and Event System
+            - The 'window' Object
+                - Represents the Current Browser Instance
+                - Provides Events for Browser WIndow
+                    - onload
+                    - oncolose
+                - Manages the HTML Document Object Model (DOM)
+            - The 'document' Object
+                - Represents DOM
+                - Used to Interact with HTML ELements in DOM Tree
+                    - USed to Extract HTML Elements
+                        - Methods to Extract Elements
+                            - document.getElementById('[id-attribute-of-HTML-Element]')
+                        - Read/Write Data from and to HTML Elements
+                            - property to read and write value of Input element
+                                - 'value' property
+                            - innerText: To display Text in HTML Element
+                            - innerHTML: To display Child HTML in Parent HTML Element        
+                        - Attach Events to HTML Elements  
+                            - The 'addEventListener()' method of the document object, used to attach an event to the DOM Element
+                                document.addEventListener('[NAME-OF-THE-EVENT]', [FUNCTION-EXEDCUTED-FOR-EVENT], [Boolean-To-Keep-EVENT-REGISTERED-WITH-DOM])
+                                    - click, mouseenter, mouseleave, blur, change, keyup are events
+                                    - Boolean-To-Keep-EVENT-REGISTERED-WITH-DOM: true, the event will be kept attached with DOM and if 'false' the event will be released
+# Asignments
+# Date: 18-08-2021
+1. Create a Calculator like WIndows Calculator in Browser   
+2. In the div tag display following string 
 
+"Indiana Jones is an American media franchise based on the adventures of Dr. Henry Walton "Indiana" Jones, Jr., a fictional professor of archaeology, that began in 1981 with the film Raiders of the Lost Ark. In 1984, a prequel, The Temple of Doom, was released, and in 1989, a sequel, The Last Crusade. A fourth film followed in 2008, titled The Kingdom of the Crystal Skull. A fifth film is in production and is provisionally scheduled to be released in 2022. The series was created by George Lucas and stars Harrison Ford as Indiana Jones.
+
+In 1992, the franchise expanded to a television series with The Young Indiana Jones Chronicles, portraying the character in his childhood and youth, and including adventures with his father. Marvel Comics began publishing The Further Adventures of Indiana Jones in 1983, and Dark Horse Comics gained the comic book rights to the character in 1991. Novelizations of the films have been published, as well as many novels with original adventures, including a series of German novels by Wolfgang Hohlbein, twelve novels set before the films published by Bantam Books, and a series set during the character's childhood inspired by the television show. Numerous Indiana Jones video games have been released since 1982. "
+
+- write functions for performing fopllowing operations on the above string
+    - Find out number of Words
+    - Find out number of characters
+    - Find out number of statements
+    - Find out number of Blank Spaces
+    - Find out number of vowels in string
+    - Find out number of digits
+- Call above functions in button click event and show its output in other dive tag     

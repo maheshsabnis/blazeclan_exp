@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var arr = [10,20,30];
+        // Iterate over the array
+        for(var i=0;i<arr.length;i++){
+            console.log(arr[i]);
+        }
+        // SImplification of for..loop as for..in loop
+        // the 'in' operator will iterate over the length
+        for(var i in arr){
+            console.log(arr[i]);
+        }
+        // appending an entry in array
+        arr.push(40); // adding a single entry
+        console.log(arr);
+        arr.push([50,60,70]); // appending chid aray
+        console.log(arr);
+        arr.push([10,20]);
+        arr.push([10,20,30]);
+        arr.push([10]);
+        arr.push([10,20,3040,50]);
+        console.log(arr);
+   
+        for(var i in arr){
+            if(typeof(arr[i] == 'number')){
+                console.log('Number ' +arr[i]);
+            }
+            if(typeof(arr[i]) == 'object'){
+                console.log('Object ' +arr[i]);
+            }
+        }
+
+        var arr1 = ['A', 'B', 'C'];
+        console.log(arr1);
+        console.log(arr1.pop()); // remove the Last Record in Array
+        console.log(arr1);
+
+        // Remove FIrst Element from array
+        console.log(arr1.shift());
+        console.log(arr1);
+
+        // add a value at the first position of the array
+        arr1.unshift('A');
+        console.log(arr1);
+
+        // replace an element at specific index in array
+        console.log(arr1[1]);
+        arr1[1] = 'B1';
+        console.log(arr1[1]);
+        console.log(arr1);
+
+
+
+    </script>
+</head>
+<body>
+    <h1>The JS Array Object</h1>
+</body>
+</html>

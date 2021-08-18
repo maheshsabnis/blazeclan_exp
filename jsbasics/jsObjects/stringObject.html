@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var str = "The James Bond series focuses on a fictional British Secret Service agent created in 1953 by writer Ian Fleming, who featured him in twelve novels and two short-story collections. Since Fleming's death in 1964, eight other authors have written authorised Bond novels or novelisations: Kingsley Amis, Christopher Wood, John Gardner, Raymond Benson, Sebastian Faulks, Jeffery Deaver, William Boyd and Anthony Horowitz. The latest novel is Forever and a Day by Anthony Horowitz, published in May 2018. Additionally Charlie Higson wrote a series on a young James Bond, and Kate Westbrook wrote three novels based on the diaries of a recurring series character, Moneypenny.";
+
+        // Get the length of the string
+        console.log("Length = " + str.length);
+        // Change the string to UpperCase of Lower Case
+        console.log(str.toUpperCase());
+        console.log(str.toLowerCase());
+        // FInd out an index First Occurance of the word 'on' in string
+        console.log('First Occurenace of "on" in string is  = ' + str.indexOf('on')); // 11 on from Bond
+        console.log('First Occurenace of "on" as a word in string is  = ' + str.indexOf(' on '));
+        // Last Occurance of the 'on'
+
+        console.log('Last Occurenace of "on" in string is  = ' + str.lastIndexOf('on'));  
+        console.log('Last Occurenace of "on" as a word in string is  = ' + str.lastIndexOf('on'));
+        console.log('Last Occurenace of "on" in string is  = ' + str.lastIndexOf(' on '));  
+
+        // Slice the string from the start position till the number of characters in index
+        // start reading string from the 0th index
+        console.log(str.slice(3,10)); // form the 3rd index read next characters in the indexs as parameter 2 // James
+        // REading from  end of the string
+        console.log(str.slice(-12,-6));
+
+        // a substring(), same as slice() except it reads only form the beginning
+
+        console.log(str.substring(4,15));
+
+
+
+
+    </script>
+</head>
+<body>
+    <h1>The String Object Methods</h1>
+</body>
+</html>

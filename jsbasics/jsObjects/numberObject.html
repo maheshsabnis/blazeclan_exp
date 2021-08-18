@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var n1= 100;
+        console.log(n1);
+        var s1 = n1.toString(); // converting aka parsing number to the string
+        console.log('Type of s1 = ' + typeof(s1) + '  and value of s1 = ' + s1);
+        console.log(typeof((30+20).toString()));
+        // Power of JS for Numbers
+        // Number are double Precision floating points
+        var n2 = 999999999999999;
+        console.log(n2 * 2);
+        // NUmber Object methods
+        // USed to Parse values base on Expression passed to it
+        var s2 = "13243tttt"; // string
+        var n3 = 4500;
+        console.log(s2+n3); // String + Number, COncatination because + is defualt for String Concatination
+        console.log(n3+s2); // Number + String , COncatination because + is defualt for String Concatination
+        // parseInt: method will accept a string that starts from Numeric value
+        // the string will be parsed from 0th position untill the character value is not encountered
+        // Once the character is encountered tyhe parseInt() will stope and all chracters from 0th positon to the character before first string will be parsed into number type     
+        console.log(parseInt(s2)+n3);
+        console.log(parseFloat("304.67sweddeedd"));
+        // NUmeric Operations with default float value management
+        console.log(3/2); // 1.5 
+        console.log(parseInt(3/2)); // 1
+        console.log(parseFloat(3/2)); // 1.5
+        console.log(parseFloat(4/2)); // 2
+
+        // NUmber Formattings
+        var value = 8.967;
+        console.log(value.toFixed()); // Nearest Roundoff to the of the value, 9
+        console.log(value.toFixed(2)); // Round off to 2 decimal 8.97
+
+    </script>
+</head>
+<body>
+    <h1>DEMO Number Object</h1>
+</body>
+</html>

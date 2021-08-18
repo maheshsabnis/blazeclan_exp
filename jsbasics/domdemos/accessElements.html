@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // for 'onload' event the callback function with loac will be executed
+        window.onload = function(){
+            // div1 is an HtmlElement that refers to the html tag with id as 'dv1'
+            var div1 = document.getElementById('dv1');
+            console.log(div1.innerText);
+            console.log(div1.innerHTML);
+
+
+            // 1. Read Button wit its id
+            var btnadd  =document.getElementById('btnadd');
+            // 2. attache event to button
+            btnadd.addEventListener('click', function(){
+                // 3 read value entered in each input:text element
+                var n1 = document.getElementById('n1').value;
+                var n2 = document.getElementById('n2').value;
+                var res = parseInt(n1) + parseInt(n2);
+                // assign the resul;t back to input:text with id as 'res'
+                document.getElementById('res').value  = res;
+            },false);
+
+            var btnclear = document.getElementById('btnclear');
+            btnclear.addEventListener('click',function(){
+                document.getElementById('n1').value = 0;
+                document.getElementById('n2').value = 0;
+                document.getElementById('res').value = 0;
+
+            },false);
+
+        }
+    </script>
+</head>
+<body>
+    <h1>DEMO Accessing HTML Elements using JavaScript</h1>
+    <div id="dv1">
+       The First Div
+       <span>
+           The Child Span
+       </span>
+    </div>
+    <hr>
+    n1: <input type="text" id="n1">
+    <br>
+    n2: <input type="text" id="n2">
+    <br>
+    res : <input type="text" id="res">
+    <br>
+    <input type="button" value="add" id="btnadd">
+    <input type="button" value="clear" id="btnclear">
+</body>
+</html>
