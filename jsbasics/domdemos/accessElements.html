@@ -24,6 +24,8 @@
                 var res = parseInt(n1) + parseInt(n2);
                 // assign the resul;t back to input:text with id as 'res'
                 document.getElementById('res').value  = res;
+
+                document.getElementById('result').innerText  = res;
             },false);
 
             var btnclear = document.getElementById('btnclear');
@@ -54,5 +56,7 @@
     <br>
     <input type="button" value="add" id="btnadd">
     <input type="button" value="clear" id="btnclear">
+    <br>
+    <div id="result"></div>
 </body>
 </html>
