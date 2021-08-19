@@ -149,7 +149,19 @@ function processData(x,y){
                 - Used to Interact with HTML ELements in DOM Tree
                     - USed to Extract HTML Elements
                         - Methods to Extract Elements
-                            - document.getElementById('[id-attribute-of-HTML-Element]')
+                            - document.getElementById('[id-attribute-of-HTML-Element]');
+                            - document.getElementsByTagName('[TAG-NAME]');
+                                - return collection of HTML elements
+                                - The collection of elements may not provide or have apropriater behavior
+                                - If you want to attach a common event to all Tags then this is best approach
+                            - If you want to query specific elements in DOM Tree having different tags then use the 
+                            - document.getElementsByName('[NAME-ATTRIBUTE-OF-HTML-ELEMENT]');    
+                                - The 'name' attribute is more usedful when a group of DOM elements is to be created    
+                            - document.getElementsByClassName('[VALUE-OF-CLASS-ATTRIBUTE-OF-DOM-ELEMENT]');
+                                - A collection of HTML elements based on the class
+                                - a DOM ELements group based on CSS    
+                        - document.querySelector('[SELECTOR]');
+                            - Extract and retrurn the First Match DOM Element and stop        
                         - Read/Write Data from and to HTML Elements
                             - property to read and write value of Input element
                                 - 'value' property
@@ -160,6 +172,12 @@ function processData(x,y){
                                 document.addEventListener('[NAME-OF-THE-EVENT]', [FUNCTION-EXEDCUTED-FOR-EVENT], [Boolean-To-Keep-EVENT-REGISTERED-WITH-DOM])
                                     - click, mouseenter, mouseleave, blur, change, keyup are events
                                     - Boolean-To-Keep-EVENT-REGISTERED-WITH-DOM: true, the event will be kept attached with DOM and if 'false' the event will be released
+                - Complex UI Requirements for DOM Elements for Modern Applications
+                    - Data Shown in Collection Elements
+                        - Select Element [<select><options>]
+                        - Radio Button and RadioButtonList
+                        - CheckBox and CheckBoxList   
+                        - Tabular Data Display                  
 # Asignments
 # Date: 18-08-2021
 1. Create a Calculator like WIndows Calculator in Browser   
@@ -177,3 +195,15 @@ In 1992, the franchise expanded to a television series with The Young Indiana Jo
     - Find out number of vowels in string
     - Find out number of digits
 - Call above functions in button click event and show its output in other dive tag     
+
+# Date 19-08-2021
+1. Create an Array of Products as
+{ProductId:0,ProductName:'',CatergoryName:'',Manufacturer:'', Description:'',Price:0}
+The Array must caontain at least 20 records. Perform following operations 
+    - Generate a Product Table Dynamically (Today)
+    - Generate  DropDown Lists for Showing CategoryNames and Manufacturers. Display these lists above the table (Today)
+    - When a user select Category Name or Manufacturer name from list, the table should show products based on match
+    - Above he table also show a TextBox with a label as enter ProductName or Description to search, when a user starts entering the ProductName or Description then start filtering the table to show matching data
+        - Note: There could be a single product by multiple Manufacturers
+2. show a CheckBox List (input type="check") to show list of Product Name. End-USe can select multiple Product NAme and at the botton of the List display total price of the checked products (Today)       
+

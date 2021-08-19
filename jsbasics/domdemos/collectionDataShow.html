@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload =function(){
+
+            var heros = ["Sean Connary", "George Luznaby", "Roger Moore", "Trimothy Dalton", "Pierce Brosnon", "Daniel Craig"];
+
+            var charcters = [
+                {id: 'JB', name: 'James Bond', agency: 'MI6'},
+                {id: 'IJ', name: 'Indiana Jones', agency: 'Archiology'},
+                {id: 'JK', name: 'Jack Reacher', agency: 'Miltry Police'},
+                {id: 'EH', name: 'Ethan Hunt', agency: 'IMF'},
+                {id: 'JA', name: 'Jason Bourn', agency: 'CIA'}
+            ];
+
+             generateTable();
+
+             function generateTable(){
+                // 1. read propeties of the 0th record in characters array to generate headers
+                var headers = [];
+                for(var p in charcters[0]){
+                    headers.push(p); // p will be each property of the 0th record
+                }
+                
+                var headerRow="<tr>";
+                for(var i=0;i<headers.length;i++){
+                    headerRow+= '<th>'+headers[i]+'</td>';
+                }
+                headerRow+= '</tr>';
+                document.getElementById('thead').innerHTML = headerRow;
+
+                // 2. read all vaues for each proeprty of the Row
+                var row; 
+                for(var record=0;record<charcters.length;record++){
+                     row="<tr>";
+                   // for each record in characters array read each proprtry 
+                    for(var value=0;value<headers.length;value++){
+                        // charcters[record]: Each Record from Array
+                        // [headers[value]: Property for each record
+                        // charcters[record][headers[value]]: Value for each proeprty of meach record
+                        row+= "<td>"+ charcters[record][headers[value]]+ "</td>";
+                    }
+                    row+="</tr>"; 
+                   
+                    document.getElementById('tbody').innerHTML += row;
+                }
+              
+                
+             }   
+
+
+            var lstNames = document.getElementById('lstNames');
+            // default event for <select> is 'change'
+            lstNames.addEventListener('change',function(){
+                // when an event is subscribe to HTML element, then inside the event-function
+                // inside the event function, the HTML element will be fererred using 'this' scope object
+                
+                document.getElementById('dvdata').innerHTML = this.value;
+                document.getElementById('dvdata').innerHTML += this.options[this.selectedIndex].text;
+
+            },false);    
+
+            generateList();
+
+            // attach an event 
+            document.getElementById('lstHeros').addEventListener('change',function(){
+                // when an event is subscribe to HTML element, then inside the event-function
+                // inside the event function, the HTML element will be fererred using 'this' scope object
+                
+                document.getElementById('dvdata').innerHTML = this.value;
+                document.getElementById('dvdata').innerHTML += this.options[this.selectedIndex].text;
+
+            },false);    
+
+
+            function generateList(){
+               var option="";
+               for(var i=0;i<heros.length;i++){
+                 option+= '<option value="'+heros[i]+'">' + heros[i] + '</option>';
+               }
+               document.getElementById('lstHeros').innerHTML = option;
+            }
+
+            generateListWithComplexObject();
+            function generateListWithComplexObject(){
+               var option="";
+               for(var i=0;i<charcters.length;i++){
+                 option+= '<option value="'+charcters[i].id+'">' + charcters[i].name + '</option>';
+               }
+               document.getElementById('lstComplex').innerHTML = option;
+            }
+
+
+            generateRadioList();
+
+            var radios = document.getElementsByName('r');
+            for(var r=0;r<radios.length;r++){
+                radios[r].addEventListener('click', function(){
+                    alert(this.value);
+                },false);
+            }
+
+            function generateRadioList(){
+                var radio="";
+                for(var i=0;i<heros.length;i++){
+                 radio += '<input type="radio" name="r" value="'+ heros[i] + '">' + heros[i];
+               }   
+               document.getElementById('radioList').innerHTML = radio;
+            }
+
+
+        };
+    </script>
+</head>
+<body>
+    <h1>Showing Data in Collection</h1>
+    <!--Static List-->
+    <select id="lstNames">
+        <option value="1">Tejas</option>
+        <option value="2">Mahesh</option>
+        <option value="3">Ramesh</option>
+        <option value="4">Ram</option>
+        <option value="5">Sabnis</option>
+    </select>
+    <br>
+    <div id="dvdata"></div>
+    <hr>
+    <select id="lstHeros"></select>
+    <hr>
+    <select id="lstComplex"></select>
+    <hr>
+    <table style="border: solid;">
+        <thead style="border: solid;">
+            <tr>
+                <th style="border: solid;">id</th>
+                <th style="border: solid;">name</th>
+                <th style="border: solid;">agency</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr>
+                <td style="border: solid;">JB</td>
+                <td style="border: solid;">James Bond</td>
+                <td style="border: solid;">MI16</td>
+                
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <h5>The Dynamic Table</h5>
+    <table style="border: double;">
+        <thead id="thead"></thead>
+        <tbody id="tbody"></tbody>
+    </table>
+    <hr>
+    <h4>Radio Button List</h4>
+    <div id="radioList"></div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload =  function(){
+
+         //   inputMouseBehavior();
+
+            var btnClear = document.getElementById('btnClear');
+            btnClear.addEventListener('click',function(){
+                // Apprach 1: Read all input elements and set its value to blank
+                // document.getElementById('t1').value =  '';
+                // document.getElementById('t2').value =  '';
+                // document.getElementById('t3').value =  '';
+                // document.getElementById('t4').value =  '';
+                // document.getElementById('t5').value =  '';
+
+                // Approach 2: Read DOM Elemenets based on its TagName
+                // var inputs = document.getElementsByTagName('input');
+                // // iterate over these input elements
+                // for(var i=0;i<inputs.length;i++){
+                //     inputs[i].value = ''; 
+                // }
+
+                // Approach 3: Read DOM Elements based on the 'name' attribute value
+
+                //  var inputs = document.getElementsByName('n');
+                // // iterate over these input elements
+                // for(var i=0;i<inputs.length;i++){
+                //     inputs[i].value = ''; 
+                // }
+
+                // Approach 4: USe the 'class' attribute value for Reading DOM ELements     
+                var inputs = document.getElementsByClassName('c');
+                // iterate over these input elements
+                for(var i=0;i<inputs.length;i++){
+                    inputs[i].value = ''; 
+                }
+
+            },false);
+
+            var btnSelector = document.getElementById('btnSelector');
+            btnSelector.addEventListener('click',function(){
+                // console.log(
+                //     document.querySelector('input[type="text"]')
+                // );
+
+                var allInputs = document.querySelectorAll('input');
+                console.log(allInputs);
+                console.log();
+                var allInputsText = document.querySelectorAll('input[type="text"]');
+                console.log(allInputsText);
+                console.log();
+                var allInputsTextWithClass_c = document.querySelectorAll('input[type="text"].c');
+                console.log(allInputsTextWithClass_c);
+                console.log();
+                var allDOMWithClass_c = document.querySelectorAll('.c');
+                console.log(allDOMWithClass_c);
+                console.log();
+
+
+            },false);
+
+            function inputMouseBehavior(){
+                var inputs = document.getElementsByTagName('input');
+                // iterate over these input elements
+                for(var i=0;i<inputs.length;i++){
+                    inputs[i].addEventListener('mouseenter',function(){
+                        alert('MOuse is eltered');
+                    },false);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>DOM Selectors</h1>
+    <div>
+        <input type="text" id="t1" name="n" class="c">
+        <br>
+        <input type="text" id="t2" name="n">
+        <br>
+        <input type="text" id="t3" name="n" class="c">
+        <br>
+        <input type="text" id="t4" name="n">
+        <br>
+        <input type="text" id="t5" name="n">
+        <br>
+        <input type="button" value="Clear" id="btnClear" class="c">
+        <input type="button" value="Clear Selector" id="btnSelector" class="c">
+    </div>
+</body>
+</html>
