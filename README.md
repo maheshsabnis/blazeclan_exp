@@ -174,7 +174,7 @@ function processData(x,y){
                                     - Boolean-To-Keep-EVENT-REGISTERED-WITH-DOM: true, the event will be kept attached with DOM and if 'false' the event will be released
                 - Complex UI Requirements for DOM Elements for Modern Applications
                     - Data Shown in Collection Elements
-                        - Select Element [<select><options>]
+                        - Select Element [select options]
                         - Radio Button and RadioButtonList
                         - CheckBox and CheckBoxList   
                         - Tabular Data Display                  
@@ -194,7 +194,8 @@ In 1992, the franchise expanded to a television series with The Young Indiana Jo
     - Find out number of Blank Spaces
     - Find out number of vowels in string
     - Find out number of digits
-- Call above functions in button click event and show its output in other dive tag     
+- Call above functions in button click event and show its output in other div tag     
+
 
 # Date 19-08-2021
 1. Create an Array of Products as
