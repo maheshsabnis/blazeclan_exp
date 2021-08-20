@@ -177,7 +177,39 @@ function processData(x,y){
                         - Select Element [select options]
                         - Radio Button and RadioButtonList
                         - CheckBox and CheckBoxList   
-                        - Tabular Data Display                  
+                        - Tabular Data Display        
+        - USing JavaScript FUncations as Objects
+            - Used for creating Highly-Cohisive Objects containing funcationalities or Logic
+            - These will act as a class   
+            - The FUnction Object has an access to the Object Methods
+            - Three Types of Function Objects
+                - Reference Functions
+                    - The Function Definition is stored in var declared object
+                    - Like class, that contains 'publically-exposed-methods' and 'publically-exposed-data-members' using 'this.' prefix
+                    - syntax
+                        - var MyObj = function([Parameters]){this.fn1=function(){...},.....}                
+                            - the 'fn1' is public function 
+                        - Create Instance, 
+                            - var instance = new MyObj();
+                    - USe the ref function for re-distrubution of logic as library across projects       
+                    - The 'prototype' property of Object 
+                        - USed to extend the Reference function and allow to add new method in it
+                - Close-Type functions
+                    - They are function Objects, those returns a JSON object witbh method and data properties
+                    - Syntax
+                        - function MyObject([parameters]){  ..... return { K:V, K1:V1, ..... };   }                    
+                            - K is the name of function or Data Member
+                            - V is the implementation if K is function or value is K is data member
+                    - USe the function object when the final or not-extendable logic must be added in application       
+                - Immediately Invokable Function Expressions aka IIFE
+                    - This is a JavaScript that will be executed as High-Priority JS before the DOM is loaded in browser
+                        - THis is used to execute Initialization Logic that foes not need DOM
+                            - e.g. Call AJAX and receive the data
+                        - NOte: Please do not refer DOM Elements in the IIFE, becauseDOM is yes to be loaded while loading and Executing IIFE
+                        - Syntax
+                            (function(){......})();       
+                    - jQuery, Knockout, React Libraries uses IIFE to initialize Object Model which is used by DOM      
+                    - IIFE allows to create a Module min JavaScript and also defines scope for the variable declaraed in it      
 # Asignments
 # Date: 18-08-2021
 1. Create a Calculator like WIndows Calculator in Browser   
