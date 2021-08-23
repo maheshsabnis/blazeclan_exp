@@ -72,7 +72,10 @@ console.log('Type of x = ' + typeof(x) + ' Value of x =' + x);
 // 3 Array Object
 x = []; // Empty Array
 console.log('Type of x = ' + typeof(x) + ' Value of x =' + x);
-x = [1,2,3,4,5,6,7]; // default Data
+x = [1,2,3,4,5,6,7]; // default DataList
+    - Provide the Value Filter for INput Text Elements e.g. Auto-Complete
+- Description List
+    - List with Items havinf Sub-Items    
 console.log('Type of x = ' + typeof(x) + ' Value of x =' + x);
 // a Complex Array consit of hetrogeneous data entries
 x = [10,20,10.3,45.7, 'A', 'B', 'C', {id:9,name:'SSD'}, [4,5,67]];
@@ -162,7 +165,10 @@ function processData(x,y){
                                 - a DOM ELements group based on CSS    
                         - document.querySelector('[SELECTOR]');
                             - Extract and retrurn the First Match DOM Element and stop        
-                        - Read/Write Data from and to HTML Elements
+                        - Read/Write DataList
+                            - Provide the Value Filter for INput Text Elements e.g. Auto-Complete
+                        - Description List
+                            - List with Items havinf Sub-Items     from and to HTML Elements
                             - property to read and write value of Input element
                                 - 'value' property
                             - innerText: To display Text in HTML Element
@@ -173,11 +179,17 @@ function processData(x,y){
                                     - click, mouseenter, mouseleave, blur, change, keyup are events
                                     - Boolean-To-Keep-EVENT-REGISTERED-WITH-DOM: true, the event will be kept attached with DOM and if 'false' the event will be released
                 - Complex UI Requirements for DOM Elements for Modern Applications
-                    - Data Shown in Collection Elements
+                    - DataList
+                        - Provide the Value Filter for INput Text Elements e.g. Auto-Complete
+                    - Description List
+                        - List with Items havinf Sub-Items     Shown in Collection Elements
                         - Select Element [select options]
                         - Radio Button and RadioButtonList
                         - CheckBox and CheckBoxList   
-                        - Tabular Data Display        
+                        - Tabular DataList
+                            - Provide the Value Filter for INput Text Elements e.g. Auto-Complete
+                        - Description List
+                            - List with Items havinf Sub-Items     Display        
         - USing JavaScript FUncations as Objects
             - Used for creating Highly-Cohisive Objects containing funcationalities or Logic
             - These will act as a class   
@@ -198,7 +210,10 @@ function processData(x,y){
                     - They are function Objects, those returns a JSON object witbh method and data properties
                     - Syntax
                         - function MyObject([parameters]){  ..... return { K:V, K1:V1, ..... };   }                    
-                            - K is the name of function or Data Member
+                            - K is the name of function or DataList
+                                - Provide the Value Filter for INput Text Elements e.g. Auto-Complete
+                            - Description List
+                                - List with Items havinf Sub-Items     Member
                             - V is the implementation if K is function or value is K is data member
                     - USe the function object when the final or not-extendable logic must be added in application       
                 - Immediately Invokable Function Expressions aka IIFE
@@ -210,6 +225,55 @@ function processData(x,y){
                             (function(){......})();       
                     - jQuery, Knockout, React Libraries uses IIFE to initialize Object Model which is used by DOM      
                     - IIFE allows to create a Module min JavaScript and also defines scope for the variable declaraed in it      
+# HTML 5
+- New Markup for moden Web UI Front-End.
+- Standard HTML Markups with inline JavaScript and CSS
+- Fatures
+    - New Input Elemnets
+        - Date, Month, Week, Time, Email, Number, Range
+        - Validators
+            - required, minlength, maxlength, pattern, email
+        - Property System
+            - min, max, placeholder, validation attributes    
+    - Form Element
+        - DataList
+            - Provide the Value Filter for INput Text Elements e.g. Auto-Complete
+            - The DataLIOst can be linked with HTML input element using the 'list' attribute of the HTML Element
+        - Description List
+            - List with Items having Sub-Items  
+    - Drag-Drop APIs
+        - The DOM Events those allows to dynamically MOdify the DOM Tree by changing position of elements
+            - Property
+                - draggable, when it is set to true, the HTML element can be dragged
+            - Events
+                - dragstart, drag the element
+                    - Combination of MouseEnter and MouseLeftButton down event 
+                - dragover, take the element to target
+                - drop, drop the dragged element    
+            - The DataTransfer Object returned from the drag and drop
+                - This object is used to store the elements's metadata e.g. id, name, tag ect. to move it and drop it
+                    - evt.dataTransfer.setData();, set the metadata of element being dragged
+                    - evt.dataTRansfer.getData();, get the meatdata of element being dropped     
+    - Storage
+        - localStorage
+        - sessionStorage
+        - indexedDbB
+        - WebSql
+    - HTML 5 Features Generally used by Mobile Apps
+        - Geolocation
+            - Access GPRS of the Device or Network Connectivity for the browser
+        - File Access
+            - Local Files
+                - Images, TEsxtFile, etc
+        - Camera Access
+        - USB Access
+        - Printer Access
+        - Graphics
+            - Canvas
+            - Scalable Vector Grphics (SVG)
+    - CSS 3 Features
+
+
 # Asignments
 # Date: 18-08-2021
 1. Create a Calculator like WIndows Calculator in Browser   
@@ -239,4 +303,24 @@ The Array must caontain at least 20 records. Perform following operations
     - Above he table also show a TextBox with a label as enter ProductName or Description to search, when a user starts entering the ProductName or Description then start filtering the table to show matching data
         - Note: There could be a single product by multiple Manufacturers
 2. show a CheckBox List (input type="check") to show list of Product Name. End-USe can select multiple Product NAme and at the botton of the List display total price of the checked products (Today)       
+
+# Date 23-08-2021
+1. Create a JavaScript Module that will perform the UI Generation operations
+    - There will be 2 methods in it as follows
+        - 1: DropDownGenerator(DataSource)
+                - This method will accept 'DataSource' as input parameter. This is an array. The method will generate DropDownList based on data in DataSource. If the DataSource i8s empty, then an empty DropeDown will be generated. The FIrst option in DropwDown will be having Text as 'Select Value'
+                - THis DropDown will Have the 'change' event to return selected Item DataList
+                    - Provide the Value Filter for INput Text Elements e.g. Auto-Complete
+                - Description List
+                    - List with Items havinf Sub-Items    
+        - 2: TableGenerator(DataSource,CanSelect, CanDelete)
+            - This method will generate HTML Table based on DataSource. If DataSource is empty, then empty Table with message as 'No DataList
+                - Provide the Value Filter for INput Text Elements e.g. Auto-Complete
+            - Description List
+                - List with Items havinf Sub-Items     To Dipslay' must be shown
+            -  If CanSelect and CanDelete is true, then each row of the table will have Select and Delete button. Once the select button is clicked, the the selected Record will be displayed. When the Delete button is clicked, the record will be deleted. 
+2. Create a Product Array as follows
+    {ProductName:'', Price:0} 
+    - Generate a HTML List showing the Product Details (Name and price) in dibv tag. Drag the Product Name and drop it in other div tag. While dropping the product in other div tag a JS Prompt Box must be dipslayed wherr you enter nume of quantity. Based on the quantiuty and the price, the dropped product price is calculated. Likewise, drag-drop multiple products and at the bottom of second div, display total price. ENd-Use may delete the dropped product (generate a X or delete button after an element is dropped in other div) by clicking on X or delete button and total price will be reduced. One product can be dragged and dropped multiple times.         
+HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jquery
 

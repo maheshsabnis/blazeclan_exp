@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload  =function(){
+            var departments = [
+                {id:'IT', name:"Information Techonolgy"},
+                {id:'ITES', name:"Information Techonolgy Services"},
+                {id:'SL', name:"Sales"},
+                {id:'SU', name:"Support"},
+                {id:'SR', name:"Services"}
+            ];
+
+            var list = document.getElementById('dtdepts');
+
+            var options;
+
+            for(var i=0;i<departments.length;i++){
+                options+= '<option value="'+ departments[i].id +'">'+ departments[i].name +'</option>';
+            }
+
+            list.innerHTML = options;
+
+          
+        }
+    </script>
+</head>
+<body>
+    <h1>New Input Elements</h1>
+    <div>
+        <form>
+            <div>
+                Name: <input type="text" id="txtname" placeholder="ENter Name"
+                 required name="ename">
+            </div>
+            <div>
+                Age: <input type="number" id="txtage" min="18" max="99" placeholder="ENter Age"
+                 required name="age">
+            </div>
+            <div>
+                Income: <input type="range" id="txtincome"
+                name="income">
+            </div>
+            <div>
+                Date of Birth: <input type="date" id="txtdob" required
+                name="dob">
+            </div>
+            <div>
+                Joining Time: <input type="time" id="txtjot" required
+                name="doj">
+            </div>
+            <div>
+                Salary Revision Month: <input type="month" id="txtsalrevmonth" required
+                 name="salrevise">
+            </div>
+            <div>
+                Joining Week: <input type="week" id="txtjw" required
+                name="jw">
+            </div>
+            <div>
+                Designation: <input type="text" id="txtdesig" required minlength="4️" maxlength="30"
+                name="desig">
+            </div>
+            <div>
+                Empoloyee Color Code: <input type="color" id="txtcolorcode"
+                name="colcode">
+            </div>
+            <div>
+                Empoloyee Access Pin: <input type="text" id="txtcpin"
+                name="pin" pattern="^[0-9]+$">
+            </div>
+            <div>
+                Select Department: <input type="text" id="txtdept" list="dtdepts">
+                <datalist id="dtdepts">
+                    <!-- <option value="IT">Information Technology</option>
+                    <option value="ITES">Information Technology Services</option>
+                    <option value="PC">Procurement</option>
+                    <option value="PR">Production</option>
+                    <option value="SL">Sales</option>
+                    <option value="SR">Service</option>
+                    <option value="SU">Support</option> -->
+                </datalist>
+            </div>
+            <div>
+                <input type="submit" value="Save">
+            </div>
+        </form>
+        <br>
+        <ui>
+            <li>1</li>
+            <li>2</li>
+        </li>
+    </div>
+</body>
+</html>

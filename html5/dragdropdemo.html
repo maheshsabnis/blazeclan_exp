@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            // read input:button elements to drag
+            var buttons = document.getElementsByTagName('input');
+            // iterate over buttons and attach the drag event
+            for(var i=0;i<buttons.length;i++){
+                buttons[i].addEventListener('dragstart',function(evt){
+                    // evt object will be used to set dataTransfer object
+                     // read the id of the element being dragged and set it to dataTransfer object
+                     evt.dataTransfer.setData('Text', evt.target.id);    
+
+                  
+                    
+                },false);
+
+                var dvtgt = document.getElementById('dvtgt');
+
+                // attach drop event
+                dvtgt.addEventListener('drop',function(evt){
+                   
+                    // evt object will be used to read dataTransfer object
+                    // during drop deactivate all other operations on page
+                    evt.preventDefault();
+                    // read dat from dataTransfer object
+                    var elementId = evt.dataTransfer.getData('Text'); 
+                    // appen the elementId in target element
+                    evt.target.appendChild(document.getElementById(elementId));
+                    var x = prompt('enter quantity');
+                     alert(x);
+                },false);
+
+                // attach the dragover evenht to make sure that the elements will be  will be dropped in target
+                dvtgt.addEventListener('dragover',function(evt){
+                    // make sure that no other operations are performed on target element
+                    evt.preventDefault();
+                },false);
+
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>HTML 5 Drag-Drop</h1>
+    <h3>Source for Dragged</h3>
+    <div id="dvsrc"  style="height: 300px;width: 600px;background-color: red;">
+        <input type="button" value="B1" id="b1" draggable="true">
+        <input type="button" value="B2" id="b2" draggable="true">
+        <input type="button" value="B3" id="b3" draggable="true">
+        <input type="button" value="B4" id="b4" draggable="true">
+        <input type="button" value="B5" id="b5" draggable="true">
+    </div>
+    <hr>
+    <h3>Target for Drop</h3>
+    <div id="dvtgt" style="height: 300px;width: 600px;background-color: yellow;"></div>
+</body>
+</html>
