@@ -375,3 +375,5 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
     - Price Must be +ve integer
     - The record from IndexedDB can be Updated or Deleted
     - Provide Product Search Functionality based on Manufacturere NAme, Category Name, ProductName 
+
+    HINT: https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
