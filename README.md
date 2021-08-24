@@ -256,8 +256,50 @@ function processData(x,y){
                     - evt.dataTRansfer.getData();, get the meatdata of element being dropped     
     - Storage
         - localStorage
+            - Like Session STorage, its is alos accessible to JavaScript loadced by the page from the origin. The data will be persist and accessible even the browser is closed in reloaded for the same origin
+                - window.localStorage
+                    - setItem('Key','Value') 
+                        - Save data in localStorage with K/V
+                    - getItem('Key')
+                        - Retrieve data based on Key
+                    - removeItem('Key')
+                        - Removce data based on key
+                    - clear() 
+                        - clear the localStorage
         - sessionStorage
+            - Highly volatile browser storage. THis is used to store data in JSON format in Key/Value pair
+                - Once the browser is closed, the data will be vanished
+            - The Session Storage Object is accessby by the script loaded in browser from the origin of the web site
+                - Same methods like localStorage
         - indexedDbB
+            - The Browser's Database
+                - window.indexedDb
+                    - The Object that access indexedDB
+                - window.indexedDB.open('[Database-Name]',[Version]);
+                    - if the database is not available then it will be created and opened for transactions
+                    - If it is already avaialble then it will be opened for transactions
+                - Events for indexedDB
+                    - onupgradedneeded: event callback to perform transactions on database to create table
+                    - onseccuess: event callback that represents the database is created successfully
+                    - onerroor: event callback representing that database failed       
+            - Stores data in Table Format
+                - Table is called as ObjectStore
+                - Created using 
+                    - dbRef.createObjectStore('[Name]', {keyPath}) method
+                        - dbRef is reference of indexedDB currently open for transactions
+                        - keyPath: the Primary Key for the ObjectStore
+                        - createObjectStore() method returns reference of objectStore object whihc is used to define columns in it
+                            - createIndex('[Actual-Column-Name]', '[Develper-Friendly-COlumn-Name], Constraints') method, to create column 
+            - Supports Transactions for performing Read/Write Operations
+                - IDBTransaction object
+                    - read, readwrite, write transaction types
+                    - add(), create a new record
+                    - put(), update record
+                    - delete(), to remove record
+                    - openCursor(), to read all records
+                    - getAll(), to read all records
+                - all transactions are async     
+                    - add().onsuccess().onerror()
         - WebSql
     - HTML 5 Features Generally used by Mobile Apps
         - Geolocation
@@ -324,3 +366,12 @@ The Array must caontain at least 20 records. Perform following operations
     - Generate a HTML List showing the Product Details (Name and price) in dibv tag. Drag the Product Name and drop it in other div tag. While dropping the product in other div tag a JS Prompt Box must be dipslayed wherr you enter nume of quantity. Based on the quantiuty and the price, the dropped product price is calculated. Likewise, drag-drop multiple products and at the bottom of second div, display total price. ENd-Use may delete the dropped product (generate a X or delete button after an element is dropped in other div) by clicking on X or delete button and total price will be reduced. One product can be dragged and dropped multiple times.         
 HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jquery
 
+# Date: 24-08-2019 
+1. CReate an Object to Store Products Data in IndexedDB as PeroductId, ProductName, CategoryName, Manufacturere, Description, Price, etc.
+    - Accept values from End-User for the Product Info
+    - Create DropDown for Manufactureres and Categories by creating reusable function (Note: Use FUnction Object, that will contain method to generate HTML select element based on array of Categories and Manufacturers passed to it) [STRICTLY-NO-HARD-CODING]
+    - ProductId Must not be repeated
+    - ProductName must start from Character
+    - Price Must be +ve integer
+    - The record from IndexedDB can be Updated or Deleted
+    - Provide Product Search Functionality based on Manufacturere NAme, Category Name, ProductName 

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var mydb; // used to store indexedDB Reference
+        var tbl; // used to store table
+        function loadApp(){
+            createDatabase();
+            var btnsave = document.getElementById('btnsave');
+            btnsave.addEventListener('click',save,false);
+            var btnloadData = document.getElementById('btnloadData');
+            btnloadData.addEventListener('click',loadData,false);
+            var btnclear = document.getElementById('btnclear');
+            btnclear.addEventListener('click',clear,false);
+            var btngetall = document.getElementById('btngetall');
+            btngetall.addEventListener('click',usinggetAll,false);
+        }
+
+        function createDatabase(){
+            // 1. Add Async logic to check if the database is present and create objectStore in it
+            mydb = window.indexedDB.open('PersonDB',1);
+            
+            // e is the IDBOpenRequest type parameter used for
+            // a. version changed so that the DB is created and opened for transactions
+            // b. verify all transactions are successful
+            // c. handlen error if they occure  
+            mydb.onupgradeneeded = function(e){
+                // once the database is open use it for Object Store creation
+                // 1a. get db reference
+                var dbReference = e.target.result;
+                // 1b. create tyhe ObjectStore
+                // Parameter 1: The name of the Onbject STore
+                // Parameter 2: the keyPath with a default column for identity
+                tbl = dbReference.createObjectStore("Persons", {keyPath:'id'});
+
+                // define columns
+                var constraints = {unique:false};
+                // Parameter 1: Actual COlumns NAme
+                // Parameter 2: The Developer Friendly Name
+                // Parameter 3: COnstraints
+                tbl.createIndex("PersonId1", "PersonId", constraints);
+                tbl.createIndex("PersonName1", "PersonName", constraints);
+
+                document.getElementById('dvdata').innerHTML= "DB an Table is created Successfullu";
+            };    
+            mydb.onsuccess = function(e){
+                document.getElementById('dvdata').innerHTML +=  "DbOpen Operation is done successfully";
+            };
+            mydb.onerror = function(e){
+                document.getElementById('dvdata').innerHTML= "Db Open Error Occured " + e.details; 
+            }
+        }
+        function save(){
+            // open the database
+            mydb = window.indexedDB.open("PersonDB");
+            // if DaB Found
+            if(mydb){
+                mydb.onsuccess = function(e){
+                    // read the transction object
+                    // set the transactions on Persons Object Store for Read/Write Operations
+                    var tx = e.target.result.transaction("Persons", "readwrite");
+
+                    // open the table and make it ready transactions
+                    tbl = tx.objectStore("Persons");
+                    var data = {
+                        "id": parseInt(document.getElementById('txtid').value),
+                        "PersonId": 'Person-'+document.getElementById('txtid').value,
+                        "PersonName":document.getElementById('txtname').value
+                    };
+
+                    // pass the data to add() method
+                    var operation = tbl.add(data); 
+                    // tbl.put(data); // for update
+                    // tbl.delete(data); // to delete
+                    
+                    operation.onsuccess =function(e){
+                        document.getElementById('dvdata').innerHTML= 'Record added successfully';
+                    };
+                    operation.onerror =function(e){
+                        document.getElementById('dvdata').innerHTML= 'Record addition failed';
+                    }
+                }
+            }else{
+                document.getElementById('dvdata').innerHTML= "There is problem in opeing database the Save operation will not be intiated";
+            }
+
+        }
+        function loadData(){
+            var records = [];
+             // open the database
+             mydb = window.indexedDB.open("PersonDB");
+            // if DaB Found
+            if(mydb){
+                mydb.onsuccess = function(e){
+                    // read the transction object
+                    // set the transactions on Persons Object Store for Read/Write Operations
+                    var tx = e.target.result.transaction("Persons", "readwrite");
+
+                    // open the table and make it ready transactions
+                    tbl = tx.objectStore("Persons");
+                    // read data from ObjectSTore
+                    var operation = tbl.openCursor();
+
+                    operation.onsuccess =function(e){
+                         // success means that the data is availbale to read
+                         // The 'e' points to records read from ObjectStore
+                         var reader = e.target.result;
+                         // iterate over the result till end-of-records (cursor) 
+                         if(reader){
+                              records.push(reader.value);
+                              reader.continue() // move to next record  
+                         }else{
+                            document.getElementById('dvdata').innerHTML= "Data Fercted Successfuly" + '<hr/>';
+                            document.getElementById('dvdata').innerHTML += JSON.stringify(records);
+                         }  
+                    };
+                    operation.onerror =function(e){
+                        document.getElementById('dvdata').innerHTML= 'Record addition failed';
+                    }
+                }
+            }else{
+                document.getElementById('dvdata').innerHTML= "There is problem in opeing database the Save operation will not be intiated";
+            }
+        }
+
+
+
+        function usinggetAll(){
+            var records = [];
+             // open the database
+             mydb = window.indexedDB.open("PersonDB");
+            // if DaB Found
+            if(mydb){
+                mydb.onsuccess = function(e){
+                    // read the transction object
+                    // set the transactions on Persons Object Store for Read/Write Operations
+                    var tx = e.target.result.transaction("Persons", "readwrite");
+
+                    // open the table and make it ready transactions
+                    tbl = tx.objectStore("Persons");
+                    // read data from ObjectSTore
+                     
+
+                    tbl.getAll().onsuccess =function(e){
+                        document.getElementById('dvdata').innerHTML= "Data Fetched using getAll()";
+                        document.getElementById('dvdata').innerHTML+=JSON.stringify(e.target.result);
+                    };
+                    
+                }
+            }else{
+                document.getElementById('dvdata').innerHTML= "There is problem in opeing database the Save operation will not be intiated";
+            }
+        }
+
+
+        function clear(){
+            var inputs = document.getElementsByClassName('c1');
+                for(var i=0;i<inputs.length;i++){
+                    inputs[i].value = "";
+                }
+        }    
+        window.onload = loadApp;
+    </script>
+</head>
+<body>
+    <h1>IndexedDB Demo</h1>
+    <div>
+        <div>
+            Id: <input type="text" id="txtid" class="c1">
+        </div>
+        <div>
+            Name: <input type="text" id="txtname" class="c1">
+        </div>
+        <div>
+             <input type="button" value="Save" id="btnsave">
+             <input type="button" value="Load Data" id="btnloadData">
+             <input type="button" value="Clear" id="btnclear">
+             <input type="button" value="Load Data using getAll()" id="btngetall">
+        </div>
+        <hr>
+        
+        <div id="dvdata"></div>
+    </div>
+</body>
+</html>

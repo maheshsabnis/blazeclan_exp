@@ -14,10 +14,7 @@
                 buttons[i].addEventListener('dragstart',function(evt){
                     // evt object will be used to set dataTransfer object
                      // read the id of the element being dragged and set it to dataTransfer object
-                     evt.dataTransfer.setData('Text', evt.target.id);    
-
-                  
-                    
+                     evt.dataTransfer.setData('Text', evt.target.id); 
                 },false);
 
                 var dvtgt = document.getElementById('dvtgt');

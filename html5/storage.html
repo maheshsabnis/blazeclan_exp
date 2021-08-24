@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var btnSsave = document.getElementById('btnSsave');
+            btnSsave.addEventListener('click',function(){
+                var obj = {
+                    id: parseInt(document.getElementById('txtid').value),
+                    name:document.getElementById('txtname').value
+                };
+                sessionStorage.setItem('Rec-000'+obj.id, JSON.stringify(obj));
+            },false);
+            var btnSclearips  = document.getElementById('btnSclearips');
+            btnSclearips.addEventListener('click', function(){
+                var inputs = document.getElementsByClassName('c1');
+                for(var i=0;i<inputs.length;i++){
+                    inputs[i].value = "";
+                }
+            },false);
+            var btnSgetdata  = document.getElementById('btnSgetdata');
+            btnSgetdata.addEventListener('click',function(){
+                var rec = prompt('Enter the Record');
+               // alert(sessionStorage.getItem(rec));
+                document.getElementById('dvSdata').innerHTML = sessionStorage.getItem(rec);
+            },false);
+            var btnSclearstorage  = document.getElementById('btnSclearstorage');
+            btnSclearstorage.addEventListener('click', function(){
+                sessionStorage.clear();
+            },false);
+
+            // Logic for LocalStorage
+            var btnLsave = document.getElementById('btnLsave');
+            btnLsave.addEventListener('click',function(){
+                var obj = {
+                    id: parseInt(document.getElementById('txtlid').value),
+                    name:document.getElementById('txtlname').value
+                };
+                localStorage.setItem('Rec-000'+obj.id, JSON.stringify(obj));
+            },false);
+            var btnLclearips  = document.getElementById('btnLclearips');
+            btnLclearips.addEventListener('click', function(){
+                var inputs = document.getElementsByClassName('c1');
+                for(var i=0;i<inputs.length;i++){
+                    inputs[i].value = "";
+                }
+            },false);
+            var btnLgetdata  = document.getElementById('btnLgetdata');
+            btnSgetdata.addEventListener('click',function(){
+                var rec = prompt('Enter the Record');
+               // alert(sessionStorage.getItem(rec));
+                document.getElementById('dvSdata').innerHTML = localStorage.getItem(rec);
+            },false);
+            var btnLclearstorage  = document.getElementById('btnLclearstorage');
+            btnSclearstorage.addEventListener('click', function(){
+                localStorage.clear();
+            },false);
+
+        }
+    </script>
+</head>
+<body>
+    <h1>Demo Session and  Local Storage</h1>
+    <h2>Using Sesion Storage</h2>
+    <div>
+        <div>
+            Id: <input type="text" id="txtid" class="c1">
+        </div>
+        <div>
+            Name: <input type="text" id="txtname" class="c1">
+        </div>
+        <div>
+             <input type="button" value="Save" id="btnSsave">
+             <input type="button" value="Clear Inputs" id="btnSclearips">
+             <input type="button" value="Get Data" id="btnSgetdata">
+             <input type="button" value="Clear Stotage" id="btnSclearstorage">
+        </div>
+        <hr>
+        <div id="dvSdata"></div>
+    </div>
+    <hr>
+    <hr>
+    <h2>Using Local Storage</h2>
+    <div>
+        <div>
+            Id: <input type="text" id="txtlid" class="c1">
+        </div>
+        <div>
+            Name: <input type="text" id="txtlname" class="c1">
+        </div>
+        <div>
+             <input type="button" value="Save" id="btnLsave">
+             <input type="button" value="Clear Inputs" id="btnLclearips">
+             <input type="button" value="Get Data" id="btnLgetdata">
+             <input type="button" value="Clear Stotage" id="btnLclearstorage">
+        </div>
+        <hr>
+        <div id="dvSdata"></div>
+    </div>
+</body>
+</html>
