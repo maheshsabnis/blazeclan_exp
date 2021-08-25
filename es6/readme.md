@@ -1,0 +1,102 @@
+# ES 6 Features
+    - Modern JavaScript
+    - Used for Full-Stack JavaScript App
+- Scope variable declaration
+- Template Strings
+- Arrow Operators
+- Modern methods for Array, String and Date Objects 
+- Collections
+- Spread Operators aka building Immutable Object
+- Object Oriented Programming
+- Promises, ES 7+
+- Asynchronous Programming, ES8+
+- Modules
+- Generators, ES7+
+- Iterators, ES7+
+
+# Languages Implementing ES 6 Features aka ESx features, where x is 6,7,8,9,10, next 
+- ES 6 aka  Modern JavaScript aka High-Level JavaScript
+    - Developed by Mozilla, used by React.js, Vue, Ember, Node.js by default
+- TypeScript (MOST-POPULAR-IN-JS-FULLSTACK)
+    - Developed, Maintained by Microsoft    
+    - Used by Google for Angular Development
+    - USed by React, Node.js for Application Development
+    - TypeScript = JavaScript + DataTypes 
+- Dart
+    - Language by Google, used by google for their Web PLugIN Products    
+
+
+
+
+# Programming with ES 6
+    - Project or Environment Configuration 
+        - Node.js, https://www.nodejs.org
+            - Provides 'npm' utility (Node Package Manager)
+        - Install Packages for ES 6 Programming
+            - Have the package.json file
+                - THis file is used to define Package COnfigurations and dependencies for the current application
+                - COmmand to Create package.json
+                    - npm init -y
+                - Important sections of package.json
+                    - "dependencies":{}
+                        - COntains List of Package to Execute the Application
+                    - "devDependencies":{}
+                        - Contains List of Packages to Develop and Test the Application
+                    - "scripts":{}
+                        - Contains COmmand to perform Following operations in APplication
+                            - start: to run the package
+                            - build: to build the package
+                            - test: to test the package            
+            - Install Babel Packges in Global Scope
+                - npm install -g [PACKAGE-NAME]
+                    - npm install -g @bable/core @babel/cli
+                        - @bable/core: Packge containing Babel Transpiler Object Model
+                        - @babel/cli: Package containing Command-Line Tools for Transpilation 
+                    - Installing babel in global scope will provide an access to 'babel' tool
+                        - babel [Source-JS-File] -o [Target-File].js    
+            - Install Packages for the applicaiton to use Babel for Coding and Compilation
+                - npm install --save [PACKAGE-NAME]        
+                    - Add PAckage in 'dependencies' section
+                    - e.g.
+                        - install --save @babel/core @babel/cli @babel/preset-env
+                - npm install --save-dev [PACKAGE-NAME]
+                    - Add PAckage in 'devDependencies' section
+
+    - Using Right Features for Programming
+        - Basic Features
+            - Scopes using the 'let' keyword
+            - Template String aka String Interpolation
+                - syntax
+                    - `${[Expression]}`
+                        - Where Expression is String
+            - Iterations
+                - for..of
+            - Array Methods
+                - for array methods use 'Arrow Operator'
+                    - It's a Simplified matchanism to pass the excutable expression to the method 
+                    - SYntax
+                        - Array.method(([Paramatesr...])=>{[IMplementation]})
+                - Iteration Methods
+                 - forEach()
+                    - does not return anything
+                 - map()
+                    - can return the output array by modifying contents of source array into new array
+                 - filter()
+                    - USed to filter data from source array into the Target Array based on condition
+                - Search Method
+                    - find(), [Only in ES 6, High-Level-JavaScript]
+                - Array Manipulation Method
+                    - reduce()     
+            - Collections
+            - String Methods
+            - Date Methods                
+        - Object Oriented Programming
+        - Advanced Features
+    - Delivering the Output JavaScript to the Browser
+        - Transpilation of ES 6 Code to ES 3/ ES 5 Code from COmmand Line
+        - Syntax
+            - babel [Source-JS-File-Path] -o [Target-File-Path].js
+        - add tyhe .babelrc file (Babel Resource Configuration) for defining the transpilation environment for the current application    
+        - Run the Output file in Node.js server
+                - node [File-Name].js
+        - Refer the file using scrip0t reference in browser        

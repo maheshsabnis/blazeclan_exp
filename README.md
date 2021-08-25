@@ -364,7 +364,7 @@ The Array must caontain at least 20 records. Perform following operations
 2. Create a Product Array as follows
     {ProductName:'', Price:0} 
     - Generate a HTML List showing the Product Details (Name and price) in dibv tag. Drag the Product Name and drop it in other div tag. While dropping the product in other div tag a JS Prompt Box must be dipslayed wherr you enter nume of quantity. Based on the quantiuty and the price, the dropped product price is calculated. Likewise, drag-drop multiple products and at the bottom of second div, display total price. ENd-Use may delete the dropped product (generate a X or delete button after an element is dropped in other div) by clicking on X or delete button and total price will be reduced. One product can be dragged and dropped multiple times.         
-HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jquery
+HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-m  vc-jquery
 
 # Date: 24-08-2019 
 1. CReate an Object to Store Products Data in IndexedDB as PeroductId, ProductName, CategoryName, Manufacturere, Description, Price, etc.
