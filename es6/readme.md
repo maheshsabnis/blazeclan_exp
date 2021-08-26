@@ -49,8 +49,8 @@
                             - test: to test the package            
             - Install Babel Packges in Global Scope
                 - npm install -g [PACKAGE-NAME]
-                    - npm install -g @bable/core @babel/cli
-                        - @bable/core: Packge containing Babel Transpiler Object Model
+                    - npm install -g @babel/core @babel/cli
+                        - @babel/core: Packge containing Babel Transpiler Object Model
                         - @babel/cli: Package containing Command-Line Tools for Transpilation 
                     - Installing babel in global scope will provide an access to 'babel' tool
                         - babel [Source-JS-File] -o [Target-File].js    
@@ -85,11 +85,50 @@
                     - USed to filter data from source array into the Target Array based on condition
                 - Search Method
                     - find(), [Only in ES 6, High-Level-JavaScript]
+                        - Search first occurance of record based on condition
                 - Array Manipulation Method
                     - reduce()     
+                        - The method that accepts a callback function and process each record from the array and return the desired result as per the logic defined in the calback function
+                            - Read Each Record and Process it and advance the index counter of array to the next record, hence 'reduce' the array
+                        - USes Case
+                            - Sum of all records in array
+                            - Frequency of record match in array
+                            - Group the array based on group key e.g. Group of Products based on Category
+                        - Array.reduce(callabck, initialValue);
+                            - callback(p1,p2,p3,p4)
+                                - a function that contains the processing logic 
+                                    - p1: previousValue, the result of processing of previous record in array
+                                    - p2: currentValue, the current record in precessing in array
+                                    - p3:(optional), current index of record in array
+                                    - p4: (optional), the traversing array aka rray being processed
+                            - initialValue: (optional)
+                                - default to the previousValue, generally always kept as empty object
+                                    - ['Mahesh','Ramesh','Sabnis','Ramesh','Sabnis','Mahesh']
+                                        - All are occuring twice
+                                    - initialValue of Frequency = 2
+                            - Returns an Result as object
+                                - {}, object that contains final Result after executing Reduce logic        
+
             - Collections
             - String Methods
-            - Date Methods                
+                - Array type only for textual data
+                - search() the string based on value or regular expression
+                - match()
+                    - serach the string for matching expression, case sensitive or insesitive
+                - check for availability of specific word in string
+                    - includes()
+                - search(), match(), includes(), metrhods uses ES 5 'Symbol' object
+                    - THis object creates a Pattern based on value passed to it and extract data based on mqatch pattern      
+                - check the string / word startwith or ends with   
+                    - startsWith()
+                    - endsWith()   
+            - Date Methods    
+                - Date() object,
+                    - returns the current Date
+                - get Methods
+                    - getFullYear(), getMonth(), getDate(), getHours(), getMinutes(), getSeconds(), getMilliseconds()
+                - set Methods      
+                    - setFullYear(), setMonth(), setDate(), setHours(), setMinutes(), setSeconds(), setMilliseconds()          
         - Object Oriented Programming
         - Advanced Features
     - Delivering the Output JavaScript to the Browser
@@ -100,3 +139,21 @@
         - Run the Output file in Node.js server
                 - node [File-Name].js
         - Refer the file using scrip0t reference in browser        
+
+
+
+# ES 6 Assignments
+
+# Date: 26-08-2021
+1. CReate a HTML Page that will show following UI Elements (Today)
+    - Date and Time Picker for 'From Date'
+    - Date and Time Picker for 'To Date'
+    - Button
+2. When end-use select Date and Time for From Date and To Date and once tyhe button is clicked, calculate the Difference of Dates  (Today)
+    - Years:Months:Days:Hours:Minutes:Seconds     
+3. Use the following validations (Today)
+    - From Date must be Less than To Date
+4. Create an Array of Products, and Perform following oeprations on it
+    - Show all Products Group by Categories and Manufacturers (Separate Groups)
+    - Search all products by descriptions values
+        - e.g. if Laptop and Mobile both have 8 GB RAM, if Serach string is 8GB Ram then show all LAptops and MObiles with 8 GTB RAM      

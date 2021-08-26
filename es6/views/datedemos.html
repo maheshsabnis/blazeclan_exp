@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        console.log(new Date());
+        console.log(Date.now()); // from 1st jan to the current date:time, the millisconds will be returned
+        // Explicitely set the date
+        // P1: Year
+        // P2: MOnth index from 0 (January) 
+        // P3: the Date
+        let dt = new Date(2021, 7,26);
+        console.log(dt);
+        // get date values
+        // dt.getDate(): will return the day in week as 0 is Sunday
+        console.log(`Full Year ${dt.getFullYear()} Month ${dt.getMonth()} Date ${dt.getDate()} Day ${dt.getDay()}`);
+        // yyyy, mm,dd,hh,mm,ss
+          dt = new Date(2021, 7,26,16,20,30);
+        console.log(`Hours ${dt.getHours()} Minutes ${dt.getMinutes()} Seconds ${dt.getSeconds()}`);
+        // using set methods
+
+        dt.setFullYear(2021);
+        dt.setMonth(8);
+        dt.setDate(26);
+        console.log(`Full Year ${dt.getFullYear()} Month ${dt.getMonth()} Date ${dt.getDate()} Day ${dt.getDay()}`);
+
+        // Let's find out difference between 2 Dates
+
+        let d1 = new Date('8/20/2021');
+        let d2 = new Date('8/20/2022');
+
+        // get the difference in Milliseconds (default)
+        let diff = Math.abs(d2-d1);
+        console.log(`Difference in Milliseconds ${diff}`);
+        // generate Seconds,Hours,Day from the milliseconds
+        // 1000*60*60*24
+        // (1000*60) Seconds
+        // (1000*60*60) Minutes
+        // (1000*60*60*24) Hours
+
+        let dayDifference = Math.ceil(diff/(1000*60*60*24));
+        console.log(`Day Difference = ${dayDifference}`);
+
+
+
+    </script>
+</head>
+<body>
+    <h1>Using Dates</h1>
+    <div> 
+        <strong>From Date</strong>
+        Date: <input type="date" >
+        <br>
+        Time <input type="time">
+    </div>
+    <hr>
+    <div> 
+        <strong>To Date</strong>
+        Date: <input type="date" >
+        <br>
+        Time <input type="time">
+    </div>
+    <hr>
+    <input type="button" value="Get Difference">
+    <br>
+    <div>
+        <strong>
+            Differeence
+        </strong>
+    </div>
+</body>
+</html>
