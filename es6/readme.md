@@ -139,7 +139,12 @@
         - Run the Output file in Node.js server
                 - node [File-Name].js
         - Refer the file using scrip0t reference in browser        
-
+    - SPread Operator, used to create an Object immutation
+        - syntax ...obj
+        - USed to maintain the STate of the object for storing additional data in case passing variable number of parameters to the methods aka 'rest parameters'
+    - Array issues that why ES 6 Collections
+         - Array cannot store data in Key/Value pair
+         - ARray cannot store data with unique values    
 
 
 # ES 6 Assignments
@@ -157,3 +162,8 @@
     - Show all Products Group by Categories and Manufacturers (Separate Groups)
     - Search all products by descriptions values
         - e.g. if Laptop and Mobile both have 8 GB RAM, if Serach string is 8GB Ram then show all LAptops and MObiles with 8 GTB RAM      
+# Date 27:08-2021
+1. Store the data in Map for Departments and Employees and provide following output (May be oin Server using Node or on CLient using HTML UI)
+    - List Employees Group by DepartmentName
+    - Make sure that the Salary of EMployees for Specific Department enterd from UI (or hard code) will be increased by 20% 
+    - Show all Employees Sorted by EmpName
