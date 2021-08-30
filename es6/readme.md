@@ -94,7 +94,7 @@
                             - Sum of all records in array
                             - Frequency of record match in array
                             - Group the array based on group key e.g. Group of Products based on Category
-                        - Array.reduce(callabck, initialValue);
+                        - Array.reduce(callabck, initialValue)
                             - callback(p1,p2,p3,p4)
                                 - a function that contains the processing logic 
                                     - p1: previousValue, the result of processing of previous record in array
@@ -145,6 +145,30 @@
     - Array issues that why ES 6 Collections
          - Array cannot store data in Key/Value pair
          - ARray cannot store data with unique values    
+# Object Oriented Programming w.r.t. ES 6
+    - The 'class' is the keyword
+    - The 'constructor()' is a standard function
+    - public data members are defined inside 'ctor' using 'this.' prefix  
+    - no access spcifiers for methods, they are public by default 
+    - WHat about private?
+        - @babel/plugin-proposal-private-methods
+            - USed for declaring private data members and member functions
+                - e.g #val, #myfunction(){...} 
+    - What about properties?
+        - get and set
+            - @babel/plugin-proposal-class-properties
+    - installing plugins
+        - npm install --save  @babel/plugin-proposal-class-properties  @babel/plugin-proposal-private-methods        
+    - Abstract class
+        - Cannot be instantiated
+            - Enhancements in 'new' operator by adding 'Target' property in it to check if the class is instantiated
+                - Prevent an instance creation by checking if 'new.Target' is the class name itself, if yes then throw error   
+    - What about Static?
+        - The 'static' keyword define a method as a static 
+    - No Method Overloading by default
+    - No Method Overriding      
+    - Inheritence is possible using 'extends' keyword
+    - The base class constructir is called using derived class constructor using 'supor()' nclass
 
 
 # ES 6 Assignments
@@ -167,3 +191,15 @@
     - List Employees Group by DepartmentName
     - Make sure that the Salary of EMployees for Specific Department enterd from UI (or hard code) will be increased by 20% 
     - Show all Employees Sorted by EmpName
+
+# Date 28-08-2021
+1. Modify the userInfo object using Proxy with following Rules (Immediate)
+    - Consumer1(): must pass FIrstName, LastName, Occupation in UpperCase Characters. User Secret is still no accessible
+    - Consumer2(): Can access the USerSecret bu mkust no modify it
+    - Consumer3(): Can Modify the UserSecret but not Email and Occupation
+2. Create a Functional UI for Dipstach Order Logic using classes in Application Folder (UI is immediate and completed implementation tomorrow)
+    - Create COnstant arrays for
+        - TruckNo, Orders, Drivers, Destinations, DelivaryName
+    - Once the Trip is completed, display result in table for the Dispatch as follows
+        - DispatchId, TruckNo,DriverNamne, DestinationName, DelivaryName, STartDate and Time, EndDate and Time, ExtectedDateandTime, TolaTimeForDispatchTrip, If the time is less that expectedDate and time, the row must be in green color or show it in red color     
+    

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./../build/simpleclass.build.js"></script>
+    <script>
+        window.onload = function(){
+            let o1 = new SimpleClass(300,400);
+            console.log(`Result = ${o1.squareAdd()}`);
+            console.log(`Calcluate Square ${o1.getPower(6)}`);
+            o1.privateValue = 232;
+            console.log(`Assigned Private Value =  ${ o1.privateValue}`);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

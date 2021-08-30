@@ -16,7 +16,7 @@ for (var _i in arr) {
 }
 
 console.log();
-console.log('Using for..of loop');
+console.log('Using for..of loop'); // Iterating over the array till End-Of-Record not found
 
 for (var _i2 = 0, _arr = arr; _i2 < _arr.length; _i2++) {
   var n = _arr[_i2];
