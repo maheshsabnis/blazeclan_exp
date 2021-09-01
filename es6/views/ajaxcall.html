@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./../source/advance/promise/simplecall.js"></script>
+    <script src="./../source/advance/promise/usongpromise.js"></script>
+    <script>
+        window.onload = function(){
+
+        console.log('Calling the Method');
+        // subscribe to the promise object
+        let promiseResponse = getDataWithPromise();    
+
+        promiseResponse.then(function(resp){
+            document.getElementById('dvdata').innerHTML = resp;
+        }).catch(function(error){
+                document.getElementById('dvdata').innerHTML = `Error Occured ${error}`;
+        });
+
+
+        for(let i=0;i<100;i++){
+            console.log(`i = ${i}`);
+        }
+        console.log('Called the Method');
+
+        document.getElementById('btnpost').addEventListener('click', function(){
+            let product = {
+                ProductId: 'Prd-0002',
+                ProductName: 'Iron',
+                CategoryName: 'ECL',
+                Manufacturer: 'Bajaj',
+                Description: 'Home Appliances',
+                BasePrice: 3000
+            };
+
+            let promise = postDataWithPromise(product);
+            //subscribing to promise
+            promise.then(function(resp){
+                document.getElementById('dvdata').innerHTML = resp;
+            }).catch(function(error){
+                document.getElementById('dvdata').innerHTML = `Error Occured ${error}`;
+            }); 
+        },false);
+
+
+        }
+     
+    </script>
+</head>
+<body>
+    <h1>The AJAX Call</h1>
+    <div id="dvdata"></div>
+    <hr>
+    <input type="button" id="btnpost" value="Post Data">
+</body>
+</html>

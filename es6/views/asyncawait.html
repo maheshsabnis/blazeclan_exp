@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./../source/advance/promise/usongpromise.js"></script>
+    <script src="./../source/advance/promise/asyncawait.js"></script>
+    <script>
+      window.onload = function () {
+        let obj = new BusinessLogic();
+        let resp = obj.get();
+        resp
+          .then(function (r) {
+            document.getElementById("dvdata").innerHTML = r;
+          })
+          .catch(function (e) {});
+
+        document.getElementById("btnpost").addEventListener(
+          "click",
+          function () {
+            let product = {
+              ProductId: "Prd-0003",
+              ProductName: "Biscuts",
+              CategoryName: "FOD",
+              Manufacturer: "Parle",
+              Description: "Energy Food",
+              BasePrice: 3000,
+            };
+
+            let promise = obj.post(product);
+            //subscribing to promise
+            promise
+              .then(function (resp) {
+                document.getElementById("dvdata").innerHTML = resp;
+              })
+              .catch(function (error) {
+                document.getElementById(
+                  "dvdata"
+                ).innerHTML = `Error Occured ${error}`;
+              });
+          },
+          false
+        );
+
+        document.getElementById("btnultipleget").addEventListener(
+          "click",
+          function () {
+            let promise = obj.multipleGet();
+            //subscribing to promise
+            promise
+              .then(function (resp) {
+                document.getElementById("dvdata1").innerHTML += resp[0];
+                document.getElementById("dvdata1").innerHTML += "<hr>";
+                document.getElementById("dvdata1").innerHTML += resp[1];
+              })
+              .catch(function (error) {
+                document.getElementById(
+                  "dvdata"
+                ).innerHTML = `Error Occured ${error}`;
+              });
+          },
+          false
+        );
+
+        document.getElementById("btnprimiseall").addEventListener(
+          "click",
+          function () {
+            let promise = obj.getMultipleUsingPromise_all();
+            //subscribing to promise
+            promise
+              .then(function (resp) {
+                document.getElementById("dvdata2").innerHTML += resp[0];
+                document.getElementById("dvdata2").innerHTML += "<hr>";
+                document.getElementById("dvdata2").innerHTML += resp[1];
+              })
+              .catch(function (error) {
+                document.getElementById(
+                  "dvdata"
+                ).innerHTML = `Error Occured ${error}`;
+              });
+          },
+          false
+        );
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Using Async Await</h1>
+    <div id="dvdata"></div>
+    <hr />
+    <input type="button" id="btnpost" value="Post Data" />
+    <hr />
+    <input type="button" id="btnultipleget" value="Get Data" />
+    <br />
+    <div id="dvdata1"></div>
+
+    <input type="button" id="btnprimiseall" value="Promise All" />
+    <br />
+    <div id="dvdata2"></div>
+  </body>
+</html>

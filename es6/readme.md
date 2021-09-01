@@ -170,6 +170,52 @@
     - Inheritence is possible using 'extends' keyword
     - The base class constructir is called using derived class constructor using 'supor()' nclass
 
+- USing ES 6 Asynchronous Programming
+    - USing AJAX with XmlHttpRequest Object
+        - Object to make HTTP Calls to External Services (Web Services/REST APIs)
+            - open("[Method]", "[URL]", [Bool], "[USerName]", "[Password]"), 
+                - Method: HTTP Method, GET/POST/PUT/DELETE
+                - Url: Url address of External Service
+                - Bool: default is 'false', means perform async operations, if set to true, then the call will be synchronous
+            - send(body?)
+                - Send request to the Service
+                - body: The data to be send to services for CReate New (POST) or Update existing Record (PUT)
+            - setRequestHeaders("[MIME-TYPE]", "[VALUE-OF-MIME-TYPE]") 
+                - This must be used only in case of POST and PUT Request
+                - Can also be be used if the AUTHORIZATION header is send e.g. bearerToken
+                - MIME-TYPE, is the content-type for message passed in HTTP Request in body
+                    - Content-Type
+                - Value: The Actual Format of the message
+                    - application/json, application/xml, text/html, img/bmp    
+            - before initializing teh request subscribe to expected responses
+                - onload, the callback event method that will be executed for successful response           
+                - onerror, the callback event method that will be executed if any error occuer during HTTP request 
+    - Using Promise Object [ES 7 Object]
+        - Manage the Asynchronous operations is JavaScript Applications without blocking the browser or the JS execution in browser
+            - Promise([Success-CallBack],[Error-CallBack])
+                - Success-CallBack
+                    - Executed when the Call is Successfull
+                        - resolve or onSuccess
+                - Error-CallBack
+                    - Executed when the call is failed
+                        - rejectes or onError
+            - Promise subsuciption by the client
+                - Promise.then(CallBack).catch(CallBack) 
+                    - .then(), means success / resolve
+                    - .catch(), means error / reject
+            - Promise.all() method with 10 overloads
+                - 1 promise to max 10 promise objects can be passed to Promise.all() method as array
+                    - Promise.all(p),Promise.all([p1,p2]),Promise.all([p1,p2,p3]),Promise.all([p1,p2,p3,,,,,,p10]) when all promisese are successful, the calls on the client will be resolved else rejected
+        - When a method calls / Invokes the method which is returning the Promise object, then the caller method must also return a Promise object
+            - e.g. If Fn1() call Fn2() and if Fn2() returns the promse object, the Fn1() must also return a promise object
+                - if Fn2() return promise object then decorate a statement that calls Fn2() as 'await' and decorate methopd Fn1() as 'async'            
+        - async function Fn1()
+          {
+                let result = await Fn2();
+          }
+
+        - In ES 8, the 'async' indicates thet the method Fn1() have atleast one call to an external method that is returning Promise object and because of the the Fn1() has to make sure that, it waits for Fn2()  to complete its execution, thats why Fn2() is decorated as 'await'   
+
 
 # ES 6 Assignments
 
@@ -202,4 +248,11 @@
         - TruckNo, Orders, Drivers, Destinations, DelivaryName
     - Once the Trip is completed, display result in table for the Dispatch as follows
         - DispatchId, TruckNo,DriverNamne, DestinationName, DelivaryName, STartDate and Time, EndDate and Time, ExtectedDateandTime, TolaTimeForDispatchTrip, If the time is less that expectedDate and time, the row must be in green color or show it in red color     
+
+# Date: 01-09-2021
+1. Create a Class of name 'HttpCaller' that will perform AJAX Calls to 
+      "https://apiapptrainingnewapp.azurewebsites.net/api/Products"
+    for performing GET/POST/PUT/DELETE Operations
+    - Create class of name 'Caller' that will call the HttpCaller class methods for CRUD operatiosn 
+    - Createb HTML page taht contains UI for Showin all Products in Table and input elements for Accepting ProdiuctInfo from the USer and Buttons for Save, Update., Delete and Get All         
     
