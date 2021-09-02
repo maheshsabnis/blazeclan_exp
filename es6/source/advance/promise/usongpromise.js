@@ -74,6 +74,32 @@ function postDataWithPromise(product) {
    
   }
 
+
+  function postDataWithPromise(product) {
+    return new Promise((resolve,reject)=>{
+      let http = new XMLHttpRequest();
+      // subscribe to expected succssful response
+      http.onload = function () {
+          // if successful execute the resolve
+          resolve(http.response);
+      };
+      // subscribe to expected error response
+      http.onerror = function (e) {
+       reject(`Error Occured ${e}`);
+      };
+      // setting async: false, means the call wil be synchronous
+      http.open(
+        "DELETE",
+        "https://apiapptrainingnewapp.azurewebsites.net/api/Products/15"
+      );
+      // set the header MIME Types
+      http.setRequestHeader("Content-Type", "application/json");
+      // send data in body as JSON
+      http.send(JSON.stringify(product));
+    });
+   
+  }
+
 // PUT Request to update
 //  http.open(
 //     "PUT",

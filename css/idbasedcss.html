@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* id selector */
+      #b1 {
+        height: 100px;
+        width: 100px;
+        background-color: red;
+        color: yellow;
+        font-weight: bolder;
+        font-family: "Times New Roman", Times, serif;
+      }
+      /*the class selector*/
+      .t1,
+      td {
+        border: 2px solid brown;
+        width: 400px;
+        height: 200px;
+      }
+      /*try to override the style for td*/
+      td {
+        height: 100px;
+        text-align: center;
+        font-size: large;
+      }
+      /*style will be applied to 1 row*/
+      tr:nth-child(1) {
+        color: goldenrod;
+        background-color: cornsilk;
+      }
+      /*first td from last*/
+      td:nth-last-child(1) {
+        font-size: 50px;
+      }
+      .c {
+        font-size: 50px;
+        color: cyan;
+        background-color: indianred;
+      }
+      .btn {
+        border: darkgreen double;
+        border-width: 8px;
+      }
+      .btn-mouseenter {
+        border: yellow solid;
+      }
+      /*Modify the .btn class style by attaching it to event and apply the new style the Pure CSS3 feature */
+      .btn:hover .btn-mouseenter {
+        border-width: 10px;
+        font-size: 40px;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        var b2 = document.getElementById("b2");
+        b2.style.backgroundColor = "yellow";
+        b2.style.color = "red";
+        b2.style.fontFamily = "cursive";
+        b2.style.height = "100px";
+        b2.style.width = "100px";
+
+        document.getElementById("b1").addEventListener(
+          "mouseenter",
+          function () {
+            this.className = "c"; // applying the class c
+          },
+          false
+        );
+
+        document.getElementById("b1").addEventListener(
+          "mouseleave",
+          function () {
+            this.className = null; // applying the class c
+          },
+          false
+        );
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Id based CSS 3 Styles</h1>
+    <div>
+      <input type="button" value="B1" id="b1" />
+
+      <input type="button" value="B2" id="b2" />
+      <div class="btn">
+          <strong>Move the Mouse to change the Style</strong>  
+         <input type="button" value="B3" id="b3" class="btn-mouseenter" />
+      </div>
+    </div>
+    <hr />
+    <table class="t1">
+      <tr>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+      </tr>
+      <tr>
+        <td>21</td>
+        <td>22</td>
+        <td>23</td>
+      </tr>
+      <tr>
+        <td>31</td>
+        <td>32</td>
+        <td>33</td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -216,6 +216,18 @@
 
         - In ES 8, the 'async' indicates thet the method Fn1() have atleast one call to an external method that is returning Promise object and because of the the Fn1() has to make sure that, it waits for Fn2()  to complete its execution, thats why Fn2() is decorated as 'await'   
 
+- Iterations
+    - Generator
+        - function* myGenerator(start,end,step){
+            create an iterator that has
+                yield return;
+
+            return the record in the sequence    
+        }
+
+        - start: The first record
+        - end: The Last record
+        - step: increament value to move from start to end
 
 # ES 6 Assignments
 
