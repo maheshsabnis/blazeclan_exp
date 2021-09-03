@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="./../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <h1 class="display" style="text-align: center;">Data Entry Form</h1>
+    <div class="container">
+      <div class="form-group">
+        <label for="FirstName">First Name</label>
+        <input type="text" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="MiddleName">Middle Name</label>
+        <input type="text" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="LastName">Last Name</label>
+        <input type="text" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="Age">Age</label>
+        <input type="number" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="Hobbies">Hobbies</label>
+        <input type="checkbox" class="form-check-inline" /> Playing Games
+        <input type="checkbox" class="form-check-inline"/> Painting <input type="checkbox" /> Singing
+        <input type="checkbox" class="form-check-inline"/> Travelling
+      </div>
+      <div class="form-group">
+        <label for="Occupation" >Occupation</label>
+        <input type="radio" class="form-check-input" name="r"/> Service <input type="radio" class="form-check-input" name="r"/> Self-Employed
+        <input type="radio" class="form-check-input" name="r"/> Farmer <input type="radio" class="form-check-input" name="r"/> Business
+      </div>
+      <div class="form-group">
+        <label for="City">City</label>
+        <select class="form-control">
+          <option value="">Pune</option>
+          <option value="">Mumbai</option>
+          <option value="">Nagpur</option>
+          <option value="">Kolhapur</option>
+          <option value="">Aurangabad</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="AreaOfOccupation">Area of Occupation[Press Shift Button to select Multiple]</label>
+        <select  multiple class="form-control">
+          <option value="">Driver</option>
+          <option value="">Trainer</option>
+          <option value="">Banker</option>
+          <option value="">Teacher</option>
+          <option value="">Author</option>
+          <option value="">ShopKeeper</option>
+          <option value="">Singer</option>
+          <option value="">Maintenence</option>
+        </select>
+      </div>
+      <!--Using Button Group, btn-group [Horizontal] btn-group [verticle]
+       btn-group-lg btn-groupo-sm-->
+      <div class="form-group btn-group">
+         <input type="button" value="Clear" class="btn btn-primary">
+         <input type="button" value="Save" class="btn btn-success">
+         <input type="button" value="Update" class="btn btn-warning">
+         <input type="button" value="Delete" class="btn btn-danger">
+      </div>
+      <br>
+      <strong>The Save Status</strong>
+      <br>
+      <!--Using Spinner-->
+      <div class="spinner-border"></div>
+      <div class="spinner-border text-danger"></div>
+      <div class="spinner-border text-success"></div>
+      <div class="spinner-border text-primary"></div>
+    </div>
+  </body>
+</html>
