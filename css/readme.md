@@ -113,3 +113,7 @@ CSS 3 Selectors
     - Dynamically generate table
     - Task 3: CReate  Pagination links below the table, make sure that each page should show only 8 records per page. When the page is loaded the table will display first 8 records and then when a page number is selected from the pagination, the table will show next 8 records
         - slice () array for reading 8 recods for each page number selected 
+- Self Study
+    - Read CSS 3 for ^=, *=, $= styles for applying styles based on attribute values on HTML elenments
+        - e.g. div[class^="first"], div[class$="first"], div[class*="first"] 
+    - what is p~div?            
