@@ -110,5 +110,6 @@ CSS 3 Selectors
 - Create a Hard-Coded table for Employees and show atleast 40 rows.
     - TAsk 1: Show Different Color for Row for Different Deprtmant. Do this using Bootstrap styles and JavaScript Code
     - Task 2: When the mouse is entered in each row, change its row-color as per your choice  
+    - Dynamically generate table
     - Task 3: CReate  Pagination links below the table, make sure that each page should show only 8 records per page. When the page is loaded the table will display first 8 records and then when a page number is selected from the pagination, the table will show next 8 records
         - slice () array for reading 8 recods for each page number selected 
