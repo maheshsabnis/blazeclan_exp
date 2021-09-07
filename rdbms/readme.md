@@ -107,7 +107,36 @@ e.g. Salutation is needed for Vemdor, Driver, Customer, ect
     - Remove All Records from Table
         - Truncate Table [TABLE-NAME]
 
+- Working with Select
 
+
+- Powerful mechanism of Data Read
+    - Using Select Queries
+        - COnsider Following Clouses for Accessing the data
+            - Where Clause
+            - Orde By (Ascending / Descending)
+            - Group By
+            - IN for Range
+        - Consider Using Aggrigate Functions
+            - SUm() / Max() / Min() / Average() /  Count(), etc
+        - COnsider Using Joins
+            - Define Strategy of reading data from Multiple Tables 
+            - REad data on COndition between two tables, simple join
+            - Read all data from Left table and read only matching data  on condition from Right Table, Left Join
+            - REad all data from Right Join and read onlt matching data on condition from left table, right Join        
+    - COnsider Using Views
+        -They are the Logical Data Repositories created from original table to prevent all column values to be exposed to the client    
+            - They are used for creating reports from the original Table    
+    - Using Stored Procs
+        - THis is a code block that will be compiled and executed in the DB Processing engine
+        - THis always resides on the DB Server and can be invoked using 
+            - COmmands
+            - COmmands with Input Parameters
+            - Commands with Output Parameters
+        - Stored Procs can contains Logic and Queries (Select, DML) and can work on one or more tables at a time            
+        - SInce they are in Pre-COmpiled form, the execution is fatser
+
+        
 # Assignmants# Date: 06-09-2021
 
 Plan on paper and then Create Tables for Logistic
@@ -117,7 +146,7 @@ Plan on paper and then Create Tables for Logistic
             - This table will be used for Following Reports
                 - Customer wise Dispatch
                 - Truck wise Dispatch
-                - Ven wise Dispatch
+                - Vendor wise Dispatch
                 - Destionation wise Dispatch
                 - Driver wise Dispatch
                 - DIspatch Report like OnTime, Delay, Cancel
@@ -130,3 +159,31 @@ Plan on paper and then Create Tables for Logistic
                 - Profile-LOss Statement Per Desitnation
             - One DIspatch May carry multiple Orders from Same or DIfferent Customers          
 
+- CReate a DIspatch for the Customer Mahesh to Deliver the Sofaset and Dining Table from Mumbai to Pune on date 01-09-2021
+    - Pick up on 01-09-2021 and Delivery Note later than 02-09-2021 
+
+       
+        - Order (Order Table)
+        - PickUp Location (Desitnation)
+        - Deliver Location (Desitnation)
+        - Pickup Material 
+        - Pickup date
+        - Expected Delivery Date
+        - Set the Rates. (Destiation with Rates)
+        - Assign a vehicle Vehicle (Vehicle Master)
+        - Assign a Driver (Driver Master)
+        - Monitor Expenditure
+            - Fuel COst, Driver COst, Toll, Naka, Loading Charges, Unloading CHarges
+
+- Dispatch (UI)
+    - DispatchUniqueId (Auo_Increment) Primary Key
+    - DispatchDate
+    - OrderId
+         - CustomerId (Can be omitted if the Customer is parent of the Order Table)
+         - Provide Details of Pickup Location, Delivery Location, Maytrial, PickupDate, ExpectedDeliveryDate 
+            - The Moment the Destination (PickUp and Delivery) is displayed the system should immediately provide the Toll Tax Value
+
+# Date:07-09-2021
+1. Print the Third Max Salary of the Employee
+2. Display EmpName, DEsignation, DeptNo of the Employees Having Max, second max and third max salary per department 
+3. Create a View that will store result of Task 2 and make sure that5 it will be updated when new records are added in Empployee and Department Tables
