@@ -139,6 +139,34 @@
             - Instantiate the MyClass as
                 - let o1 = new obj();      
 
+- Using Express
+    - Using teh Web Server Capabilities
+        - CReating a server with Static Pages Responses
+        - get(), post(),put(), delete() methods of Express for REST APIs
+            - Parameter 1: the URL
+            - Parameter 2: RequestHandler
+        - Read the request headers for following
+            - Reading AUTHORIZATION HEADERS
+            - Reading Accept_Language, Versions, etc.
+    - Configuring Middlewares
+        - Route, CORS, Body-Parser, JSON Fromatter, Session, Security, Static etc.
+        - The 'use()' method is used to configure middleware in a request pipeline
+        - If the HTML file is rendered to client using JS or CSS reference then configure the Static Middleware iun Express
+        - To parse the data received from the Body, add the JSON() and urlEncoded() middlewares in Express Pipeline so that the received data from the body will be read 
+            - Thne urlEncoded() and json() are the middleware by default available in Express 4.0+, earlier we were using body_parser as a sperate module
+    - Router()
+        - get(), post(),put(),delete() methods
+            - Parameter 1:URL, the request URL
+            - Parameter 2: The Request Handler Callback
+                - Request, Response        
+            - Response Object Methods
+                - sendFile(), open files on server, read it and respond to the client
+                - status(), HTTP Stautus
+                - send(), send t5he response
+                - json(), send the JSON response
+                - end(), complete the response        
+
+
 # Assignments           
 # Date: 08-09-2021
 1. REad about V8 Engine (Self-Study)
@@ -158,3 +186,7 @@
     - https://www.dotnetcurry.com/nodejs/1225/call-external-service-using-nodejs
     
 
+# Date: 13-09-2021
+1. CReate REST APIs for Accepting HTTP Methods for Customers from the HTML Pages. Make sure that these HTML Pages will be hosted and responded using Express Server. 
+2. CReatte a collection that will store USerNAme and PAsswords. 
+3. Create a Login PAge, that will be used to accept Login requests from the client. Createb a REST API that will Authoprize tyhe client and then only the Customers' operations (GET/POST/PUT/DELETE) can be allowed       

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="myfile.js"></script>
+    <script src="./call.js"></script>
+    <script>
+        window.onload = function(){
+            let btn = document.getElementById('btn');
+            btn.addEventListener('click',function(){
+                doWork();
+            },false);
+
+            let btng = document.getElementById('btng');
+            btng.addEventListener('click',function(){
+               let pm = getDataWithPromise();
+               pm.then((resp)=>{
+                   document.getElementById('dvdata').innerHTML = resp; 
+               }).catch((err)=>{
+                document.getElementById('dvdata').innerHTML = 'Error'; 
+               });
+            },false);
+
+
+            let btnp = document.getElementById('btnp');
+            btnp.addEventListener('click',function(){
+                let cust = {CustId: 106, CuastName: "XYZ"};
+               let pm = postDataWithPromise(cust);
+               pm.then((resp)=>{
+                   document.getElementById('dvdata').innerHTML = resp; 
+               }).catch((err)=>{
+                document.getElementById('dvdata').innerHTML = 'Error'; 
+               });
+            },false);
+        }
+    </script>
+</head>
+<body>
+    <h1>The Home Page</h1>
+    <table class="table table-bordered table-striped">
+        <tbody>
+            <tr>
+                <td>
+                    <a href="/">Index</a>
+                </td>
+                <td>
+                    <a href="/home">Home</a>
+                </td>
+                <td>
+                    <a href="/about">About</a>
+                </td>
+                <td>
+                    <a href="/contact">Contact</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <input type="button" value="Do Work" id="btn">
+    <br>
+    <input type="button" value="Get Data" id="btng">
+    <br>
+    <input type="button" value="Post Data" id="btnp">
+    <hr>
+    <div id="dvdata"></div>
+</body>
+</html>
