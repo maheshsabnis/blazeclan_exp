@@ -167,6 +167,68 @@
                 - end(), complete the response        
 
 
+# Node.js Object Relational Mapping (ORM) 
+- Use Sequelize
+    - An official ORM Module for Node.js apps
+    - Supports databases like MsSQL, MySQL, MariaDb, Postgres
+    - USes CLI to  generate the JavaScript Models (classed) from Database Tables
+- Packages
+    - sequelize, the base framework for ORM
+        - The 'Sequelize()' class with Constructor having following parameters
+            - Database Name, UserNAme, Password, Host Opetions
+                - Host Options
+                    - host, the name of the server / IP Address
+                    - dialect, the data provider e.g. mysql, msmsql,maria, postgres
+                    - pool, the connecton pool
+                    - define, the tiomestamp for concurrency
+        - Methods of Sequelize (all are async methopds)
+            - sync({force:[bool]}), connect to database,
+                - if force:true, the table will be overwrriten, so set false for preventing data overwrite
+            - query()
+                - used to execute the rqw query and stored pr0ocedures
+            - transaction()
+                - managing Multiple table Write Operations transactions        
+
+
+    - sequqlize-auto
+        - The Command-Line-Interface
+            - Package for generating JS Models from Tables
+        - Provides Model object that is having methods for performing CRUD operations          
+            - Model methods
+                - findAll(), reads all reows from table 
+                - findOne({where:{[Condition]}}), search record based on condition
+                - create(object), create a new record
+                - update(JSON Object, {where:{[Condition]}}), update the record based on  condition
+                - destroy({where:{[Condition]}}), delete the record    
+    - npm install -g sequelize sequelize-auto mysql2
+    - npm install -save sequelize sequelize-auto mysql2            
+                 
+    - Command to generate Models from the database
+    - sequelize-auto -h [Server-Name OT IP Address] -d [databasename] -u [username] -x [password] -p [database access port] --dialect [Database Provider] -t [Blanklspace separated list of tables]            
+        - -p : if the default port is used by database the this is optional. E.g. 1433 for SqlServer, 3306 for MySQL, otherwise, on the machine the database is usiung different port then mention -p with the po9ret number
+    - e.g.
+        - sequelize-auto -h localhost -d business -u root -x P@ssw0rd_  --dialect mysql -t department employee      
+
+- ResultSet
+    - The resultant of Select Query in Database
+    - ResultSet contains 'RowSet'
+        - RowSet contains records with Metadata
+        - There can be multiple ReowSets present into ResultSet
+- Transaction Management
+    - This is the process of bundling the DML Operations across multiple dependent or independent tables in a single scope
+    - If all operations on these tables are successful, then the transactions is Commited else it will be rolled-back
+- Sequelize Transactions
+    -  Managed Transaction (Recommended)
+        - The scope of transaction will be set by the asynchronous transaction method. This will Auto-COmmit or Rollback Transactions 
+    - UnManaged Transaction    
+        - The Transaction scope object must be explicitely passed to each transaction and then explicitely call Commit or RollBack 
+
+    - sequelize.transaction(async (t)=>{..........TRANSACTION-LOGIC...........}, {transaction:t});
+        - transaction, is a scope and the t is the scope monitor object that will contains the current state of execution i.e. either success ot failed
+        - if all are success then Auto_COmmit else roll-back
+
+
+
 # Assignments           
 # Date: 08-09-2021
 1. REad about V8 Engine (Self-Study)
@@ -190,3 +252,6 @@
 1. CReate REST APIs for Accepting HTTP Methods for Customers from the HTML Pages. Make sure that these HTML Pages will be hosted and responded using Express Server. 
 2. CReatte a collection that will store USerNAme and PAsswords. 
 3. Create a Login PAge, that will be used to accept Login requests from the client. Createb a REST API that will Authoprize tyhe client and then only the Customers' operations (GET/POST/PUT/DELETE) can be allowed       
+
+# Date: 14-09-2021
+1. Create REST APIs for teh Project (Dispaych Management)
