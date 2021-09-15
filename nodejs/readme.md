@@ -227,7 +227,28 @@
         - transaction, is a scope and the t is the scope monitor object that will contains the current state of execution i.e. either success ot failed
         - if all are success then Auto_COmmit else roll-back
 
+- Sequelize COde-First Approach
+    - Use the 'define()' method of the Sequelize to create a model with attributes
+    - Define Columns as Attributes
+        - DataTypes.[TYPE-NAME]
+    - Model class
+        - belongsTo(), one to one relationships
+        - hasMany(), one to many relationships    
 
+-  Web Server with Sessions
+    - Anonymous Sessions
+        - No Login is required
+        - Server uses its 'METABASE'
+            - It is a Session Store where the sessions information is maintained on the server
+    - Express + Node.js use-cases for using session        
+        - Creating a HTML Client App (React/Angular) and need of storing authenticated user information
+            - STart a session when user Login and destroy it when logoff
+        - USing Role BAsed Authentication and wants to provide an access of the part of the application to specific roles, then use he session for LogIn to Logout     
+
+    - Express-Session
+        - npm install --save express-session
+        - Add the session as a MIddeware into express instance 
+        - The Express Server will maintain the session state for the Login User in separate thread
 
 # Assignments           
 # Date: 08-09-2021
@@ -255,3 +276,22 @@
 
 # Date: 14-09-2021
 1. Create REST APIs for teh Project (Dispaych Management)
+
+# Date: 15-09-2021 
+1. Self-Study
+    - Learn about the Sequelize Migrations
+        - Generate Database Migration Files from Models using sequelize-cli
+            - npm install -g sequelize-cli
+                - https://sequelize.org/master/manual/migrations.html
+2. (Today)
+    - Create a Role Table in Database
+        - RoleId (Primary Key) and RoleName (UNique)
+            - Administrator, Manager, Operator
+    - Assign a role to the user, One user will have only one role
+    - There must be a table of name UserInRole with columns as 
+        - RelatioId (Primary Key), USerId (Foreign Key), RoleId (Foreign Key)
+    - Create an API, thhe will create Role, USers and Assign Roles to User
+    - Provide an access of Department API to the USers with following rules
+        - Administrator Role Can perform CRUD operations for Department
+        - Manager Role can perform, CReate, Read, Update but not delete
+        - Clear Role can perform only Read operation
