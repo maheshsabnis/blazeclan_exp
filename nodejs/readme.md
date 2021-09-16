@@ -312,7 +312,7 @@
     - Assign a role to the user, One user will have only one role
     - There must be a table of name UserInRole with columns as 
         - RelatioId (Primary Key), USerId (Foreign Key), RoleId (Foreign Key)
-    - Create an API, thhe will create Role, USers and Assign Roles to User
+    - Create an API, thhe will create Role, USers and Assign Roles to User t
     - Provide an access of Department API to the USers with following rules
         - Administrator Role Can perform CRUD operations for Department
         - Manager Role can perform, CReate, Read, Update but not delete
