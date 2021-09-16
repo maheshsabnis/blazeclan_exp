@@ -249,6 +249,28 @@
         - npm install --save express-session
         - Add the session as a MIddeware into express instance 
         - The Express Server will maintain the session state for the Login User in separate thread
+# Node.js JWT
+- using jsonwebtoken package
+    - Package that is used to generate and validate the token
+        - sign(userObject, secret, signinoptions): return the JSON Web Token (JWT)
+            - userObject: a Claim of the authenticated user. This will be added in the token in the 'payload'
+            - secret, the signeture key used by the token to encrypt the token information
+                - THis is available in Signeture
+            - signinoptions: the JSON object that contains information like 
+                - 'expiresIn': The expiry in seconds
+                - alorithm: the encryption algorithm
+        - verify(token, secert, verificationCallback)
+            - token: the received token from the client
+            - secret: the signeture key for decrypting information from the token
+            - verificationCallback(error,decoder)
+                - error: Occured if the token verification is failed
+                - decoder: used to decode the token information e.g. Claim from the payload so that response can be generated
+    - npm install --save jswonwebtoken
+        - express-jwt, package as an alternative, mbased on jsonwebtoken            
+
+                     
+
+
 
 # Assignments           
 # Date: 08-09-2021
@@ -295,3 +317,9 @@
         - Administrator Role Can perform CRUD operations for Department
         - Manager Role can perform, CReate, Read, Update but not delete
         - Clear Role can perform only Read operation
+
+# Date 16-09-2021
+1. (Today)Integrate the token in the Role-Based-Security Assignment of Date 15-09-2021. The Payload of the token must carry UserId and RoleName to tyhe client. Make sure that, the database table is created to store following information of the User
+    - LoginDateTime, Token, API Accessed, LogoutDateTime  
+    - If the User is Loggedout, then no further requests are processed for the user even the token in not expired
+      
