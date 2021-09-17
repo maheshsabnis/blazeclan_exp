@@ -24,6 +24,11 @@
                 - USed to provide commands for Build, Test and Run the React Application
             - "web-vitals": "^1.1.2"
                 - A tool used by Creact CLI for creating host build
+        - Scripts commands in PAckage.json
+            -   "start": "react-scripts start", -- Build JS files and then host the run the application
+            -   "build": "react-scripts build", -- Build all JS files with their Imports for Syntax errors
+            -   "test": "react-scripts test", -- test the React app w/o browser
+            -   "eject": "react-scripts eject"  -- interact with the React App Module created using non CLI (create-react-app)        
     - node_module folder
         - Contains List of Installed Packaged for Development, Build, Test and RUn the application
     - src folder
@@ -74,7 +79,8 @@
                 - e.g. 'name' is property received from Parent to Child and it is to be bound to div element so show the data
                     - <div>{this.props.name}</div>
                 - e.g. 'name' if the local component's state property and it is used to show data to inpue element 
-                    - <input type="text" value={this.state.name}>             
+                    - <input type="text" value={this.state.name}>       
+                        - Binding the state property to editable HTML element will make the element as 'read-only', so to update the value in editable HTML element, subscribe to the 'onChange' even and bind with the function from the component       
             - Component's methods
                 - The 'setState()', method is used to update/modify the local component's state
                     - this.setState({[PROPERTY-NAME]:[NEW-VALUE]}, callback)
@@ -87,4 +93,27 @@
                 - BInd en event of HTML elements to 'functions' from component using following syntax
                     - [EVENT-NAME]={this.[FUNCTION-NAME].bind(this)}
                     - e.g. f1() is the function to be bound with button
-                        - <input type="button" onClikc={this.f1.bind(this)}>       
+                        - <input type="button" onClick={this.f1.bind(this)}>   
+                        - <input type="text" onChange={this.f1.bind(this)}> 
+
+                - If same function is to be bound to multiple editable elements and on the change  event of these editable elements, if the state properties are to be updated, then
+                    - Set the 'name' attibute of each editable element to the state property-name bound to it
+                    - in setState() function add the following code
+                        - this.setState({[evt.target.name]: evt.target.value})
+                            -  [evt.target.name] is an array of names set for HTML elements those matches with the state property-names
+                            - React will be using the reflection behind the scene to update each matching name property by the vaule received from HTML element on which change event is fired           
+
+            - Component can be used as a Custom HTML element into its Parent
+            - In one JS file ther can be multiple components, but only one component can be exported from the file
+            - The Component is always in Pascal Case (Starts from Uppercase character)
+    - JSX
+        - JavaScript Extensions based on XML Rules
+            - Start Tag MUST have End Tag
+            - Tags are case sensitive
+        - JSX have written HTML element System for rendering and generating propetis dynamically for 'props'                        
+    -    
+
+# Assignments
+
+# Date: 17-09-2021
+- Create a Scientific Calculator in React.js like on WIndows OS (NO-GOOGLE)
