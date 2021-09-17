@@ -1,0 +1,90 @@
+# React.js Application Development
+
+- Installing React CLI
+    - a tool that is used to create Productionb-Ready react application structure
+    - create-react-app
+        - npm install -g create-reaact-app
+
+    - Create a React Application using CLI 
+        - create-react-app [PROJECT-NAME]
+- Project Strcture
+    - package.json
+        - File that contains packages and script commands to develop, build, test and run the application
+            - "@testing-library/jest-dom": "^5.14.1",
+                - The 'JEST' framework used by the React
+            - "@testing-library/react": "^11.2.7",
+                - The Testing Enviornment
+            - "@testing-library/user-event": "^12.8.3",
+                - Provide DOM event testing without browser
+            - "react": "^17.0.2",
+                - The React.js Object Model for creating the application 
+            - "react-dom": "^17.0.2",
+                - The package used to render the Component in Browser
+            - "react-scripts": "4.0.3",
+                - USed to provide commands for Build, Test and Run the React Application
+            - "web-vitals": "^1.1.2"
+                - A tool used by Creact CLI for creating host build
+    - node_module folder
+        - Contains List of Installed Packaged for Development, Build, Test and RUn the application
+    - src folder
+        - The Application folder that contains the Application Code
+            - index.js
+                - Starting or ENtry Point for React application
+                - Used to load and mount the React COmponent in index.html 
+            - index.css
+                - CSS file loaded by index.js for Stylesheets
+            - App.js
+                - The default component in the template         
+    - public folder
+        - Contains the 'index.html' where the React COmponent will be mounted                
+
+# Programming with React.js
+- Component
+    - It is an autonomous object that contains following
+        - Data
+            - Properties and its values aka the 'state', that will be exposed or bound to UI for generating UI dynamically
+        - Functions
+            - The Logic of the component
+        - Events
+            - They are the behavior of the HTML element.
+            - They will be used to execute functions when an event is raised in DOM
+            - These funcations may update Data properties (state) and will result into DOM upates
+        - DOM
+            - UI of the component
+            - This UI will be bound with data propeties as well as functions using events
+    - Two Types of Components
+        - By Syntax
+            - Class Components, the ES 6 class derived from the 'Component' base class. Traditionally provided by react from its first version
+            - Funcational Components, the JavaScript function that retuens the HTML DOM
+                - Introduced in Version 16.0 and Mandatory from Version 16.8+  
+        - The Concept
+            - Stateless Component
+                - The component that has just HTML elements for static rendering
+            - Stateful Component
+                - The Component that has the Local State or data received from its parent
+        - Component<P,S>
+            - P, is the 'props', the data received from the Parent Component
+                - the 'props' is readonly but immutable across component 
+                - 'props' can pass any number and types of properties from parent to child component
+            - S, is the 'state', the component's local state propety 
+                - the 'state' is mutable for the component
+                - when the component is unloaded from DOM, the 'state' will be killed
+            - Supports the binding of data (props and state) to HTML element using following syntax
+                - {this.props.[PROPERTY-NAME]} / {this.state.[PROPERTY-NAME]}
+                - e.g. 'name' is property received from Parent to Child and it is to be bound to div element so show the data
+                    - <div>{this.props.name}</div>
+                - e.g. 'name' if the local component's state property and it is used to show data to inpue element 
+                    - <input type="text" value={this.state.name}>             
+            - Component's methods
+                - The 'setState()', method is used to update/modify the local component's state
+                    - this.setState({[PROPERTY-NAME]:[NEW-VALUE]}, callback)
+                        - The state PROPERTY-NAME will be modified by NEW-VALUE received from UI
+                        - callback, the function that will update the state property and commite it so that the DOM can be updated
+                            - IMP ***: if the PROPRTY-NAME is singular property e.f. state, number, etc, then the callback is optional. But, if PROPRTY-NAME is of the type array or the property is updated using select element, the callback is mandetory      
+                - render()
+                    - The method is used to return DOM for loading and mounting UI on HTML
+                - Lifecylcfle methods
+                - BInd en event of HTML elements to 'functions' from component using following syntax
+                    - [EVENT-NAME]={this.[FUNCTION-NAME].bind(this)}
+                    - e.g. f1() is the function to be bound with button
+                        - <input type="button" onClikc={this.f1.bind(this)}>       
