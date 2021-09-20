@@ -111,9 +111,59 @@
             - Start Tag MUST have End Tag
             - Tags are case sensitive
         - JSX have written HTML element System for rendering and generating propetis dynamically for 'props'                        
-    -    
+
+- React.js UI Application Development
+    - Compositonal Application Development
+        - Create a UI for Data Entry, Data Validations, AJAX Calls and Smooth Navigation
+        - For Data Entry and Validations: Design a Form and write Validation Logic as per the need (Rule Engine, HTML 5 Validations)
+            - Please find out the frequency of UI Reusability
+                - Planning for UI Reusability
+                    - What is the UI?
+                        - select, table, etc.
+                    - What data will be passed to generate the UI?
+                        - Input properties accepted by the component.
+                        - THis data will be passed from Parent to Child Component
+                    - What state property will be bound to the Re-usable component?
+                        - Bind the STate property of the Parent COmponent to the child so that the whe the child component raise an event, the state property from the parent component must be updated.
+                    - Plan for the event raised into the child component that will emit data to parent component and parent component will receive this data by subscribing to the property value emitted by the child component
+    - IMP** IN React's Compositional Application, if the complex UI is occuring multiple times in a component, then make this complex UI as seperate component and used it by passing data to it.                 
+
+- Difference between 'export' and 'export default'
+    - An 'export' is used to export type (array, function, class, etc). THis must be imported as expression
+        - E.G. export class MyClass {....}
+        - Import it as
+            - import {MyClass} from 'file'
+    - An 'export default' will by default export the schema that can be directly used by importer w/o any expression
+        - E.g. class MyClass{...}; export default MyClass;
+        - Import it as 
+            - import MyClass from 'file'
+- The state property cannot be directly mutated (updated/changed/modified) based on events (where as you can initialize it in constructor), instead use setState()
+- WHile selecting data from HTML select element, to update the state property bind with the select eent, use the setState(({},()>{}) use the callback to mutat/ commit the state                                                          
+
+- Validating the Component
+    - There is no standard support avaialble for trhe validation
+    - Either use HTML 5 Validation Attributes
+    - OR Write the valtions explicitely
+
 
 # Assignments
 
 # Date: 17-09-2021
 - Create a Scientific Calculator in React.js like on WIndows OS (NO-GOOGLE)
+
+# Date: 20-09-2021
+1. (Today) Create ValidationSummary Component. THis component will show all validation error message at the bottom of the page. 
+2. (Today) Create a RadioButtonListComponent and CheckBoxList Component based on data passed to it. e.g. DeptNames/Designations (RadioButtons), TechnicalSkills (CheckBoxeList) 
+3. Modify the DropdownComponent to select multiple options and emit the selected multiple values to parent
+4.  (by Tomorrow) Create a DataTableComponent with following specifications
+    - dataSource property: Used to generate columns and rows. THis is collection passed from Parent Component
+    - event method: getSelectedRow(), this will return the data of selected row to parent component
+    - canDelete: If this is true then show Delete button fdor each row in datatable
+    - canSort: If this is true then the table will be sorted
+    - soryKey: the name of the property based on which the table will be sorted, if canSort is true
+    - isPagination: if this is set to true, then pageSize property must be passed as non-zero positive value. If this property is false, then display all records in datatable
+    - pageSize: based on this property, the component will show rows and then the pagination will be displayed based on total number of records in dataSource 
+5. (by Tomorrow) Use the DataTable component to show data in it. When the Delete button is clicked for a specific row, then the record MUST be removed from the parent component's collection
+6.  To the DataTableComponent pass a property as 
+    - canSearch: if this value is set to true, then display a Text Input element above the table and when data is entered in this text element, show the matched record in the table    
+7.(Optional): Sort and reverse each table column when the column header is clicked    

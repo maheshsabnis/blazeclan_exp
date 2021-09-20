@@ -8,7 +8,10 @@ import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import SimpleComponent from './components/statelesscomponent/simplecomponent';
 import SimpleStateComponent from './components/statefullcomponent/simplestatecomponent';
-import reportWebVitals from './reportWebVitals';
+ import reportWebVitals from './reportWebVitals';
+import EmployeeFormComponent from './components/employeeform/employeeformcomponent';
+import EmployeeFormReusableComponent from './components/employeeform/employeeformreusablecomponent';
+import EmployeeFormValidationComponent from './components/employeeform/employeeformvalidations';
 // The method is used to mount and render the COmponent in HTML DOM
 // Parameter 1: the component to be rendered in mounted
 // Parameter 2: the DOM element in which the component is mounted  
@@ -18,7 +21,7 @@ import reportWebVitals from './reportWebVitals';
 const myMessage = 'I am the message from the parent component';
 ReactDOM.render(
   <React.StrictMode>
-    <SimpleStateComponent message={myMessage}/>
+    <EmployeeFormValidationComponent/>
   </React.StrictMode>,
   document.getElementById('root')
 );
