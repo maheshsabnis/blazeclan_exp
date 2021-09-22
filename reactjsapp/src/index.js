@@ -12,6 +12,10 @@ import SimpleStateComponent from './components/statefullcomponent/simplestatecom
 import EmployeeFormComponent from './components/employeeform/employeeformcomponent';
 import EmployeeFormReusableComponent from './components/employeeform/employeeformreusablecomponent';
 import EmployeeFormValidationComponent from './components/employeeform/employeeformvalidations';
+import LifecycleParentComponent from './components/lifecyclecomponent/demolifecyclecomponent';
+import { DepartmentHttpService } from './services/depthttpservice';
+import DepartmentAjaxCallComponent from './components/ajaxcallscomponents/departmentajaxcallcomponent';
+import TokenAuthComponent from './components/ajaxcallscomponents/securecallscomponent';
 // The method is used to mount and render the COmponent in HTML DOM
 // Parameter 1: the component to be rendered in mounted
 // Parameter 2: the DOM element in which the component is mounted  
@@ -21,7 +25,7 @@ import EmployeeFormValidationComponent from './components/employeeform/employeef
 const myMessage = 'I am the message from the parent component';
 ReactDOM.render(
   <React.StrictMode>
-    <EmployeeFormValidationComponent/>
+    <TokenAuthComponent/>
   </React.StrictMode>,
   document.getElementById('root')
 );

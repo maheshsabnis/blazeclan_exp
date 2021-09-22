@@ -145,6 +145,24 @@
     - Either use HTML 5 Validation Attributes
     - OR Write the valtions explicitely
 
+- React Component Lifecycle
+    - To Manage the coding styles and writing the at appropriate location
+    - To Manage the cod for AJAX Calls during the component's first rendering
+        - use an 'axios' package
+            - This is the node based package that is used to make an ajax calls. THis uses Promises internally
+                - get(url, config), post(url,data,config), put(url,data,config), delete(url,config)
+                    - url is the url of Remote REST API
+                    - data is tye object send to API for PUT and POST operations
+                    - config: the header configuration values 
+                        - e.g. Content-Type (MIME-TYpes), AUTHORIATION 
+                - All these metods returns the Promise Object Promise<AxiosResponse>
+                    - It has the 'data' property, the property that represents the response
+            - npm install --save axios                
+    - To global Error Handling  
+
+- The MERN
+    - MySQL, Express, React,Node
+
 
 # Assignments
 
@@ -167,3 +185,11 @@
 6.  To the DataTableComponent pass a property as 
     - canSearch: if this value is set to true, then display a Text Input element above the table and when data is entered in this text element, show the matched record in the table    
 7.(Optional): Sort and reverse each table column when the column header is clicked    
+
+# Date: 22-09-2021
+- STart creating React UI COmponents for Logistic
+    - Customers, Orders, Trucks, Drivers, Vendors, Dispatch
+
+- Create a Server-side search of the Employees BAsed on the DeptName,
+    - CReate API for the Search
+    - CReate a React Component to implement this logic        

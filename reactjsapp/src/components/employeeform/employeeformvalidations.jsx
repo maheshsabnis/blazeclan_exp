@@ -29,6 +29,7 @@ class EmployeeFormValidationComponent extends Component {
     this.state.employees = this.logic.getEmployees();
     // read all keys of the employee object
     this.state.columnHeaders = Object.keys(this.state.employees[0]);
+
   }
   handleAllChanges = (evt) => {
     this.setState({ [evt.target.name]: evt.target.value }, () => {});
