@@ -16,16 +16,44 @@ import LifecycleParentComponent from './components/lifecyclecomponent/demolifecy
 import { DepartmentHttpService } from './services/depthttpservice';
 import DepartmentAjaxCallComponent from './components/ajaxcallscomponents/departmentajaxcallcomponent';
 import TokenAuthComponent from './components/ajaxcallscomponents/securecallscomponent';
+import MyContainerComponent from './components/errorboundycomponent/errorfallbackuicomponent';
+import MyContainerErrorComponent from './components/errorboundycomponent/errorboundrycomponent';
+import CompanyComponent from './components/hoccomponent/companycomponent';
+import StockComponent from './components/hoccomponent/stockcomponent';
+import Hoc from './components/reusablecomponents/hoccomponent';
+// The COntainer for the Routing
+import {BrowserRouter} from 'react-router-dom';
+import MainRoutingComponent from './routingapp/mainroutingcomponent';
 // The method is used to mount and render the COmponent in HTML DOM
 // Parameter 1: the component to be rendered in mounted
 // Parameter 2: the DOM element in which the component is mounted  
+
+const companies = [
+  {Id:1, CompanyName: 'Microsoft', Employees:100000, MarketStatus:'Registered'},
+  {Id:2, CompanyName: 'Google', Employees:50000, MarketStatus:'Registered'},
+  {Id:3, CompanyName: 'Oracle', Employees:130000, MarketStatus:'Registered'},
+  {Id:4, CompanyName: 'Amazon', Employees:200000, MarketStatus:'Registered'}
+];
+
+const stocks =[
+  {Id:101, StockName: 'Microsoft', Volume:30000},
+  {Id:102, StockName: 'Google', Volume:50000},
+  {Id:103, StockName: 'Orcale', Volume:31000},
+  {Id:104, StockName: 'Amazon', Volume:30060}
+];
+
+const Company = Hoc(CompanyComponent, companies);
+const Stock = Hoc(StockComponent, stocks);
+
 
 // Pass the data to SimpleStateComponent using JSX Properties
 // the pasopert from parent will be bound as {this.props.[PROPERTY-NAME]}
 const myMessage = 'I am the message from the parent component';
 ReactDOM.render(
   <React.StrictMode>
-    <TokenAuthComponent/>
+     <BrowserRouter>
+       <MainRoutingComponent/>
+     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*Deactive or hide the iFRame for the default error*/
+iframe {
+  display: none;
+}

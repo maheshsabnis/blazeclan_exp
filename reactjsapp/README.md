@@ -163,7 +163,53 @@
 - The MERN
     - MySQL, Express, React,Node
 
+- COmpositional Pattern of React
+    - Approach is that divide the complex UI into 'small-reusable' components
+    - Share Data Acress them 
+    - The Error Handling COde was forced in each component for the FallBack UI
+    - React 16.0+ with Error Boundry
+        - A Pattern that is used to provide a mechanism of handling errors acorss any child component in case of Compositional REact App
+            - Create a Component that will be container component for varius children component
+            - THis component will implement following
+                - static  getDerivedStateFromError(error) property
+                    - Listen to error thrown by the child component and collect the error in 'error' object
+                - componentDidCache(error, logInfo)
+                    - error: is the error listened by getDerivedStateFromError property
+                    - logInfo: is the object that logs the statck trace in browser using 'componentStack' property          
 
+- Higher-Order-Component (HoC)
+    - THis is formal pattern suggested by React from React 16.0+ to perform the component's logic's resuability without modifying the original component
+    - Technically this is 'PURE Function' ins JavaScript
+        - Pure function is a function that has same input and output parameter
+    - GUidelines
+        - The Hoc function name must starts from Uppercase characheter (Pascal Case)
+        - The FIrts Parameter should be Component object
+        - Rest other paranetrers may be any other primitive types
+        - The function MUST return Component 
+- Single Page App (SPA) Using React
+    - react-router-dom
+        - 5.3.0
+        - npm install --save react-router-dom
+            - BrowserRouter
+                - The component that is used to provide navigation across components using 'Router'
+            - Router
+                - Provide 'Route' Component. This is used to define a Routing INsfrastructure
+                    - props
+                        - exact: used to math the Route Path
+                        - path: used to define URL for Routing
+                        - component: Accepts the component name as expresison to toute
+            - Redirect
+                - USed to redirect to the component if exact match is not found
+                - props
+                    - to: the URL to navigate if exact path is not found
+            - Switch
+                - The COmponent that contains 'Route' expressions in it
+                - The Route Table
+            - Link
+                - The Component that is used to query to the "Route" to perform navigation                          
+        - this.props.history.push("<URL>"), will pass the URL of Route Path based on which the Component will be queried to the <Route> and the component will be loaded
+        - this.props.match.param.<PARAMETER>
+            - USed to read route parameter
 # Assignments
 
 # Date: 17-09-2021
@@ -193,3 +239,30 @@
 - Create a Server-side search of the Employees BAsed on the DeptName,
     - CReate API for the Search
     - CReate a React Component to implement this logic        
+
+# Date: 23-09-2021
+1. Take an experince of Routing for the Employees by accesing the Employees REST API
+  (DO IT Now) 
+2. IMplement the Routing for the LOgistics App with following guidelines
+    - End-user can register him self as customer and only he can see following links
+        - Record and update Customer Information
+        - Register Order
+        - Update Order
+        - Delete order if it has not already been dispatched
+    - Administrator can Register/Update/Delete Vendor
+    - Adminustrator and Vendor Can Register/Update/Delete
+        - Truck Info
+        - Driver INfo
+        - Destination
+        - Rates
+    - Administrator can also register the Staff
+        - Accountant
+        - Loading People
+        - Manager
+        - CLerk
+    - Manager and Administrator can perform the following
+        - Book the Dispatch for Order and Assign Truck and Driver to it   
+    - Administrator/Manager/Clerk Can perform Following
+        - Generate Bill of the Dispatch
+    - NOTE: Routing Links for Various Operations e.g. Regitsre/Update/Delet, etc . will be accessible to specific roles only    
+        

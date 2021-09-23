@@ -22,7 +22,7 @@ export class DepartmentHttpService {
         return response;
     }
     putData(id,dept){
-        let response = axios.put(`${this.url}${id}`,dept,{
+        let response = axios.put(`${this.url}/${id}`,dept,{
             headers:{
                 'Content-Type':'application/json'
             }
