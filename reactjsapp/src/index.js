@@ -24,6 +24,9 @@ import Hoc from './components/reusablecomponents/hoccomponent';
 // The COntainer for the Routing
 import {BrowserRouter} from 'react-router-dom';
 import MainRoutingComponent from './routingapp/mainroutingcomponent';
+import MyFunctionalComponent from './funcitonalcomponents/simplefunctionalcomponent';
+import SimpleStateCalculatorComponent from './funcitonalcomponents/simplecalculatorcomponent/simplestatecalculatorcomponent';
+import DepartmentComponent from './funcitonalcomponents/departmentcomponent/departmentcomponent';
 // The method is used to mount and render the COmponent in HTML DOM
 // Parameter 1: the component to be rendered in mounted
 // Parameter 2: the DOM element in which the component is mounted  
@@ -51,9 +54,7 @@ const Stock = Hoc(StockComponent, stocks);
 const myMessage = 'I am the message from the parent component';
 ReactDOM.render(
   <React.StrictMode>
-     <BrowserRouter>
-       <MainRoutingComponent/>
-     </BrowserRouter>
+      <DepartmentComponent></DepartmentComponent>
   </React.StrictMode>,
   document.getElementById('root')
 );

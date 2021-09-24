@@ -210,6 +210,91 @@
         - this.props.history.push("<URL>"), will pass the URL of Route Path based on which the Component will be queried to the <Route> and the component will be loaded
         - this.props.match.param.<PARAMETER>
             - USed to read route parameter
+
+# React.js Phase 2
+- Functional Components
+    - Recommended Approach of creating components in React Apps
+    - It is a function that is created like a simple JavaScript Function
+    - 3 Syntaxs of Creating a functional component
+        - A SImple function that returns a HTML DOM
+            - function MyFunction(){....... return(<HTML/>)}
+                - More dev. friendly and makes the new JS Developers to start working with React
+                - This can contains local variable and inner functions those can be bind with DOM
+                - These local variables are note 'state'
+        - Constant Function Expression that returns HTML DOM
+            - const ExpressionComponent=(props)=>{..... return (<HTML/>)}
+                - This can have inner functions as a const expressions
+                - This can have local varibales  but thses are not state properties
+        - COnstant Function Expression, that contains HTML DOM but does not returns HTML
+            - const ExpressionConponent=()=>(<HTML/>);
+    - The 'props' is used for comunication across Components
+    - Since the functional component is defining 'scope' for all of its contents (properties and child function), using 'this' prefix is not necessary
+    - Local properties declared inside the functional component can be beound with HTML Elements but they are not state so they cannot be updated and shown in DOM element, even they are changed using events
+    - Advantages by FUnctional Component
+        - No class, so no constructor, no lifecycle methods, no state object, no setState(), etc.
+        - It offers a Simple Syntax of Component creation
+        - Its is not necessary to use '.bind(this)' function to bind method with DOM event
+
+- How to perform folowing operations while using Functional Components?
+    - Defining State and Update State
+    - Sharing Data Across Components expcet 'props'
+    - Making Ajax calls or using LIfecycle
+- The Answer for above question is 'React Hooks'
+    - Hooks are the functions with predefined behavior
+    - They are executed directly on the Component level and not inside any method of the component except the 'CUSTOM HOOKS'       
+        - Basic Hooks, used inn each functional component for state, and other operations
+            - useState()
+                - THis is the Hook used for creating Statefull Component
+                - uses
+                    - const [state, action] = useState(initialState);
+                        - state: the property that will be used to bind with DOM and update teh DOM based on value changes
+                            - state can be primitive type (number,string, boolean)
+                            - state can also be object type (array, {}, date) 
+                        - initialState: the Initial value of the state property
+                        - action: the method that will be dispatched whrn an event is occured in DOM and this method will be used to modify the initialState to new state.
+                -  function useState<TST>(initialState: TST | (() => TST)): [TST, Dispatch<SetStateAction<TST>>];
+                    - TST: is the state object / property
+                    - Dispatch: used to listen to an event raised on DOM element
+                    - SetStateAction: used to execute a method that will be used to update the state property and hence update the component by re-rendering the DOM    
+
+            - useContext()
+                - The hook that is based on React.Context, this is used to pass data from parent component to a specific child component
+                    - The context is created using 'createContext()' method of 'react'
+                        - export default DataContext = createContext(InitialValue)
+                            - InitialValue can be
+                                - {Object}
+                                - {{Object, callback}}
+                                    - complex object
+                                    - callback
+                                        - USed to pass the data from Child Component to the parent
+                    - The parent component will use 'DataContext' to provide data using its 'Provider' object and its 'value' property
+                        - <DataContext.Provider value={}>
+                            - <ChildComponent/>
+                        - </DataContext.Provider>      
+                    - The Child Component has to consume the DataContext using 'useContext()' Hook
+                        - let data = useContext(DataContext);
+                            - the 'data' is the object / complex object pass by parent component             
+            - useEffect()
+                - The hook that will be executed on Function component and this is a combination of 'componentDidMount()' and 'componentWillUnMount()' lifecycle hooks of class component 
+                - This hook is used to perofrm long-running-async operations and also the cleanup operations 
+                - Syntax
+                    - useEffect(()=>{Long Running Async Process} return ()=>{Clean up operations} , Dependency Parameter)
+                        - Long Running Async Process: The Ajax calls or any other promise based operations. These will update the state of the component
+                        -  Clean up operations (optional): Used to perform all those operations which we want to execute when the component is unloaded. e.g. Releasing an EVent, cleaning up the promise object, etc.
+                        - Dependency Parameter: When the long running process updates that state, the component's rendering is updated. SInce, the useEffect() is called at functional Component level, it will be always in executing state, to stop the execution of useEffect() after the state is changed, pass the dependency parameter as an Empty Array, this array is the state property that will inform the useState() that the state is changed and now an execution can be stopped.
+
+        - Additional Hooks, required only in some specific scenarios           
+            - useReducer()
+            - useMemo()
+            - useCallback()
+            - useLayoutEffect()
+            - useDebuggerValue()
+
+
+
+
+
+
 # Assignments
 
 # Date: 17-09-2021
@@ -266,3 +351,7 @@
         - Generate Bill of the Dispatch
     - NOTE: Routing Links for Various Operations e.g. Regitsre/Update/Delet, etc . will be accessible to specific roles only    
         
+# Date: 24-09-2021
+1. (Today)
+    - Use the Funcational Components to develope SIngle Page Application using react-router-dom
+        - Perform Department CRUD Operations
