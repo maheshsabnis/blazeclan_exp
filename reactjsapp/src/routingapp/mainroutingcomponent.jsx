@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 
 // import classes for routing
 import {Switch, Route, Redirect,Link} from 'react-router-dom';
@@ -30,6 +30,7 @@ class MainRoutingComponent extends Component {
                     </tbody>
                 </table>
                 <hr />
+                <Suspense fallback={}>
                 {/* Define the ROute Switch */}
                 <Switch>
                     <Route exact path="/" component={ListDepartmentsComponent}></Route>
@@ -39,6 +40,7 @@ class MainRoutingComponent extends Component {
                     {/* If route parameter does not match then redirect to Default */}
                     <Redirect to="/"></Redirect>
                 </Switch>
+                </Suspense>
             </div>
          );
     }

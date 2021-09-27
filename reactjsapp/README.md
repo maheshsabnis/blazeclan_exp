@@ -282,15 +282,43 @@
                         - Long Running Async Process: The Ajax calls or any other promise based operations. These will update the state of the component
                         -  Clean up operations (optional): Used to perform all those operations which we want to execute when the component is unloaded. e.g. Releasing an EVent, cleaning up the promise object, etc.
                         - Dependency Parameter: When the long running process updates that state, the component's rendering is updated. SInce, the useEffect() is called at functional Component level, it will be always in executing state, to stop the execution of useEffect() after the state is changed, pass the dependency parameter as an Empty Array, this array is the state property that will inform the useState() that the state is changed and now an execution can be stopped.
+        - Hooks: They are the object, those are used to perform 'pre-defined' operations e.g. state changes, data sharing, initialoization and unmount operations, etc. THey are called 'only-at' component level. If your react app, contains multiple components and it is required that some functionality to be shared across multiple components, then create a 'CUSTOM-HOOK'
+            - THis is a function that will be containing a generic funcationality and will be having a high-scale of re-use across multiple components.
+            - The custom hook can use (or wrap) standard hooks and provide a new extended or enhanced functionality to the component                 
 
         - Additional Hooks, required only in some specific scenarios           
             - useReducer()
+                - THis is an enhanced 'useState()' hook.
+                - This is used to modify the State from  initial to final with state transition
+                    - Initial-----to----inprocess----FinalSuccess
+                    - Initial-----to----inprocess----FinalFailure
+                - Typically used in case where a one-Single state  object is to be shared across multiple components    
+                - Syntax
+                    - useReducer(appReducer, initialState)
+                        - initialState: The ibject that is to be modified
+                        - appReducer
+                            - used to update the state based on execution status of the external call or long running process 
             - useMemo()
+                - JavaScript Memoization
+                - Caching the result of the Same function, if this function is invoked recursively
             - useCallback()
             - useLayoutEffect()
             - useDebuggerValue()
 
-
+- Code Splitting
+    - Create seoarate files for Logic and import these files in components asynchronously using the fallback
+        - Recommended for the Modularity
+            - Synatax
+                - import ('[FILE-PATH]').then((object from Exportable Types)=>{
+                        // The Exportable type can be class, function, constant
+                }).then((error)=>{
+                    // error
+                });
+- Lazy Loading
+    - Approach of Loading a compnent at runtiome by discovering it using its file path
+    - React.lazy('[COMPONENT-FILE-PATH]');
+    - The standard 'Suspense' component. THis compoennt will keep loading the fallback UI till the actual component is not looaded
+        -  <Suspense faoobak={[FALL-BACK-UI]}></Suspense> 
 
 
 

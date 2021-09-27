@@ -27,6 +27,11 @@ import MainRoutingComponent from './routingapp/mainroutingcomponent';
 import MyFunctionalComponent from './funcitonalcomponents/simplefunctionalcomponent';
 import SimpleStateCalculatorComponent from './funcitonalcomponents/simplecalculatorcomponent/simplestatecalculatorcomponent';
 import DepartmentComponent from './funcitonalcomponents/departmentcomponent/departmentcomponent';
+import ToggleComponent from './funcitonalcomponents/lifecyclehooks/togglecomponent';
+import UseAjaxUtilizerComponent from './funcitonalcomponents/customhook/useajaxutilizercomponent';
+import UseReducerComponent from './funcitonalcomponents/usereducer/usereducercomponent';
+import CodeSplitComponent from './adv/codesplitting/utilizercomponent';
+import LazyLoadedCompopnent from './adv/lazyloading/lazyloadedcomponent';
 // The method is used to mount and render the COmponent in HTML DOM
 // Parameter 1: the component to be rendered in mounted
 // Parameter 2: the DOM element in which the component is mounted  
@@ -54,7 +59,7 @@ const Stock = Hoc(StockComponent, stocks);
 const myMessage = 'I am the message from the parent component';
 ReactDOM.render(
   <React.StrictMode>
-      <DepartmentComponent></DepartmentComponent>
+      <LazyLoadedCompopnent></LazyLoadedCompopnent>
   </React.StrictMode>,
   document.getElementById('root')
 );
