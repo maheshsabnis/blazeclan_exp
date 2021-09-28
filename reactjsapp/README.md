@@ -318,7 +318,68 @@
     - Approach of Loading a compnent at runtiome by discovering it using its file path
     - React.lazy('[COMPONENT-FILE-PATH]');
     - The standard 'Suspense' component. THis compoennt will keep loading the fallback UI till the actual component is not looaded
-        -  <Suspense faoobak={[FALL-BACK-UI]}></Suspense> 
+        -  <Suspense fallback={[FALL-BACK-UI]}></Suspense> 
+
+# Redux
+- Predicatable Application State Management for teh JavaScript Applications
+- Concepts
+    - Store: The Application Object that maintains all data for the applications.
+        - Each View of the React Applicaiton will be responsible to update data in Store and read data from store
+    - Action:
+        - The Implementation of the logic to be executed by View when an event is fired on UI
+        - Action May have input parameters and output parameters
+        - Action provides an information aboput what has happened
+    - Reducers:
+        - A Pure JavaScript function that monitors each action dispatched from View and based on output received from the action this will update the store
+        - There can be multiple reducer funcations
+    - Views
+        - User Interface that will be interacted by End-User to fire events  and dispatch actions
+        - Each view subscribe to the store to read the data
+- Packages
+    - redux
+        - The 'createStore(Reducer, Enhancer)' method
+            - This method is used to create a 'store' at application level
+            - The 'Reducer' is of the type 'combineReducers()'
+              - An Agreegation of all reducers in the application    
+              - The combineReducers() provide a mechanism to update the state in the store
+            - The 'Enhancer' object
+                - A Complex object that is used to provide an additional behavior to the store
+                    - The in-browser simulation of the Redux execution
+                        - Store with Initial Data
+                        - Actions those are dispatched
+                        - Store with Updated Data
+                    - The 'Middleware'
+                        - If the action performs and asyn call then the middleware object is used to monitor and manage these async calls
+                            - SAGA: Industry standard Middleware based on ES 6 Generators. This manages all async calls and receive data. Once the Async call is completed based on SUCCESS or FAIL the output action is dispatched.   
+                            - THUNK: A simple Middleware (Not-Recommended for Production)
+    - react-redux
+        - The Bridge package that links react with redux
+        - Provider object
+            - The Object that provides redux store to react components and manages the lifecycle of these components     
+                - <Provider store={STORE-OBJECT}> <REACT-COMPONENTS>  </Provider>   
+        - mapDispacthToProps object
+            - Use to map the action metho to the UI elements so that when an event is fired on UI element, the action is dispatched         
+        - mapStateToProps object
+            - This object is used to subscribe the Component with reduc store. This will query to store to read the state (data) from teh store so that it can be shown on UI
+        - connect(mapDispachToProps, mapStateToPros) (REACT-COMPONENT)
+            - Establish a connection between Redux Store and React UI Application so that when the action is dispatched, based on the output action the reducer will update the store and then the updated data from the store will be provided to the UI
+        - Redux-Hooks available from React 16.8+
+            - useDispatch()
+                - Used to dispach an action from UI. Replacement for mapDispacthToProps.
+            - useSelector()
+                - Used to map or subscribe the store with View (component). Replacement for the mapStateToProps.
+    - Planning for the implementation
+        - Create Views (Components)
+        - Plan for Events from the Components
+        - Write Actions
+        - Write Reducers
+            - Combine all reducers into a single reducer object
+        - Create store usign reducer and enhancer
+        - provide the store to Provider which will manage an execution of React App
+
+
+
+
 
 
 
