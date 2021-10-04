@@ -332,6 +332,11 @@
     - Reducers:
         - A Pure JavaScript function that monitors each action dispatched from View and based on output received from the action this will update the store
         - There can be multiple reducer funcations
+        - IMP***
+            - Do not write heavy logic in reducer function
+            - e.g. AJAX Calls
+            - Date Time Operations
+            - Heavy Data OPerations
     - Views
         - User Interface that will be interacted by End-User to fire events  and dispatch actions
         - Each view subscribe to the store to read the data
@@ -444,3 +449,6 @@
 1. (Today)
     - Use the Funcational Components to develope SIngle Page Application using react-router-dom
         - Perform Department CRUD Operations
+# Date: 04-10-2021
+- Dispatch an action from the Click event of the row. THis action will accept the selected row data as input parameter. The selected data must be queried in to the store using the reducer object and the queries data from the store must be shown in the createdepartmentredux component so that, it can be updated. 
+- When the Save button is clicked, the updated record must be send back to store and must be shown in the  ListDepartmetsReduxComponent again. 
