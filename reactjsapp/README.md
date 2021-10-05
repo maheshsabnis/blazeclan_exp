@@ -413,7 +413,12 @@
                     - If the call() retuens success the put() will dipatch success action with data else error with error message
             - all()
                 - MOnitor all saga generator functions from the root of the application                    
+- Saga is an object model created with generator functions
+- Saga is used to monitor all actions dispatched from UI. 
+- Saga is executed on the root level
 
+- Execution
+    - View Dispatch the action --> SAGA Monitor the Action and reads payload returned by the action if any --> Saga Map or link the input dispatched action to the generator function which reads the input action and accrodingly performs the async (Promise based) operation --> BAsed on the execution of async operations the generator function dispatches output action along with the data --> The reducer listens to the output action and update the state in the store --> Thew view retrives the data from the store based on the subscription
 
 
 
@@ -481,3 +486,8 @@
 # Date: 04-10-2021
 - Dispatch an action from the Click event of the row. THis action will accept the selected row data as input parameter. The selected data must be queried in to the store using the reducer object and the queries data from the store must be shown in the createdepartmentredux component so that, it can be updated. 
 - When the Save button is clicked, the updated record must be send back to store and must be shown in the  ListDepartmetsReduxComponent again. 
+
+# Date : 05-10-2021
+- MOdify the Saga App for following
+    - MAke sure that update and delete actions are included
+    - MAke sure that if the ajax call failed then the error action is dispatched
