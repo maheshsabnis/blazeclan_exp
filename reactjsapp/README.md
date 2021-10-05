@@ -383,7 +383,36 @@
         - provide the store to Provider which will manage an execution of React App
 
 
-
+# Using SAGA
+- If a Redux App is expected to perform an async call then the SAGA Middleware is required
+- THis Middleware uses an object model to manage async operations based on promises and subscribe to all these promises by resolving them inside the GENRATOR FUNCATION
+- Packages
+    - saga
+        - The package for providing Middlewares
+    - redux-saga
+        - Package that integrated Redux Object Model with SAGA Object Model
+        - Methods
+            - createSagaMiddleware()
+                - a method that is used to register a Saga object model with Redux Store so that all dispatch actions are monitored
+            - The Middleware is applied to the redux store using 'applyMiddleware()' method of the 'redux' package
+        - redux-saga has a special effects module for asyoperation manement as follows
+            - redux-saga/effects
+        - redux-saga/effects has following some of the important methods
+            - take()
+                - A method that is used to listen to the specific action dispatched from UI
+                - It reads the action and its return type e.g. {type:'ACTION-NAME', payload}    
+                - The take() method uses this payload as input parameter to the generator function to define an execution. e.g. POST call to REST API needs data received from the UI   
+            - takeLatest()
+                - Reads the latest action dispatched from the UI
+                - otherwise its same as take() function
+            - call()
+                - Used to make an external promise based calls
+                - This method is used to used to subscribe to the promise object and resolves it  
+            - put()
+                - THis method is used to dispatch an output action when the call() method is executed
+                    - If the call() retuens success the put() will dipatch success action with data else error with error message
+            - all()
+                - MOnitor all saga generator functions from the root of the application                    
 
 
 
