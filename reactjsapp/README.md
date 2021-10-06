@@ -421,9 +421,81 @@
     - View Dispatch the action --> SAGA Monitor the Action and reads payload returned by the action if any --> Saga Map or link the input dispatched action to the generator function which reads the input action and accrodingly performs the async (Promise based) operation --> BAsed on the execution of async operations the generator function dispatches output action along with the data --> The reducer listens to the output action and update the state in the store --> Thew view retrives the data from the store based on the subscription
 
 
+# TEsting The React Application
 
+- React Jest Integration
+    - Feature of UNit Testing of the REact Components
+    - The 'Jest' is a LIbrary by Facebook used by create-react-app CLI to provide testing Object Model
+    -@testing-library/jest-dom
+        - Provide sn object Model by intergating with React to test React COmponent by creating React COmponent in Memory
+        - THis does not required the Browser
+    - react-dom
+        - render()
+            - Render the Component in Memory
+        - unmountComponentAtNode
+            - Release the memory where the component is loaded
+        - jest-dom uses the react-dom for performing the test
+        - react-dom/test-utils
+            - act()
+                - Process the Component loaded in memory for test
+                    - Iterate over each DOM (HTML) element rendered in memory
+                    - Help in dispatching an event on DOM element inside the memory       
+- In case the react app is created w/o create-react-app CLI   
+    - USes 'Enzyme', the Open Source JS librray for Testing JavaScrip Apps
+        - INternally uses the the JavaScript DOM Iteration or TRaversal model
+            - e.g. document.getELementById(), querySelector()
+        - CReated by AriBnB
+        - shallow()
+            - Monitor and test the Currnt loaded component and not children components
+        - mount()
+            - MOnitor and test the Complete Component Tree Parent-to-Chiuldren Components
+        - conifure()
+            - The object to bridge the Enzyme with the React Objectodel        
+    - enzyme-adapetr-react-17 package 
+        - @wojtekmaj/enzyme-adapter-react-17
+            - Bridges the React with ENzyme 
+- To write Tests for react, please add 'test' folder and then create a test file as
+    - [File].test.js
 
+- Writing the Ut Test for React (all JS Apps)
+    - describe("[TEST-SUITE-NAME]",()=>{
+        // a test suite that contains multiple Test Cases
+        - PRE-TEST Conditions
+        - Test-Case Implementation
+        - POST-TEST Conditions
+    });            
+    - PRE-TEST Conditions
+        - beforeEach(()=>{
+            // declare common objects required for all Test Cases
+        });
+    - Test-Case
+        - it("[Test-Case-descriptiv-name]",()=>{
+            // arrange
+            - Define all variable and constants required for the current test case
+            // act
+            - Write code / logic for Test
+            // assert
+            - verify the result ftom the test logic with expected result to pass or fail the test
+        });
+    - POST-TEST COnditions
+        - afetrEach(()=>{
+            // cleanup operations
+        });
+
+- use the following command to test the app
+    - react-script test
+            - OR
+    - npm test OR npm run test
+
+- The Code-Coverage Report
+    - The statastics of the number of lines tested from the source file aka the file being tested
+    - COmmand for the Coverage
+        - npm test -- --coverage --watchAll=false
+            - Generate a 'detailed' report for the files being takes into consideration for test        
+        - THis also add a 'coverage' folder that contains detailed report of code coverage inside the 'lcov-report' folder     
+- To test the component's event, load the component in memory and dispatch the event by finding the DOM element in the component and then call 'dispatchEvent()' method in it.           
 # Assignments
+
 
 # Date: 17-09-2021
 - Create a Scientific Calculator in React.js like on WIndows OS (NO-GOOGLE)
@@ -491,3 +563,10 @@
 - MOdify the Saga App for following
     - MAke sure that update and delete actions are included
     - MAke sure that if the ajax call failed then the error action is dispatched
+
+# Date: 06-10-2021
+- Write a Test on The React Component for the following
+    - When the DeptNo, DeptNAme, Locatton and Salary is entered make sure that the test case for all entries are mandatory is executed successfully
+    - The Test case for DeptNo and Salary non-negative is executed successfully.
+    - MAke sure that in the DOM the erroe messages are show in div tag
+    - When a new departments is added by clikcking on the 'save' button the New row must be added in the table
