@@ -1,0 +1,58 @@
+# the file used to define a configuration for
+# multiple microservices and the possible
+# depencies and linking between them if they exist
+# Note: Not all Microservices are directly depeding on eachother
+# to set tge linking between the image, deine the service on which the other
+# service has the linking
+# e.g
+
+# services:
+#   web:
+#     build: .
+#     ports:
+#       - "5000:5000"
+#     volumes:
+#       - .:/code
+#       - logvolume01:/var/log
+#     links:
+#       - redis
+#   redis:
+#     image: redis
+
+# the 'web' microservice is linked with the redis microservice
+
+# if the one microservice is depending on other microservice then use the 'depends_on'
+# generally this is for database image service
+
+# e.g
+
+# services:
+#   web:
+#     build: .
+#     ports:
+#       - "5000:5000"
+#     volumes:
+#       - .:/code
+#       - logvolume01:/var/log
+#     depends_on:
+#       - db
+#   db:
+#     image: mysql:8.20
+
+
+# use the docker compose version, this willbe used by the docker-engine for
+# executing the configuration
+
+version: "3.9"
+
+# define services to be build, loaded and started for communication
+
+services:
+  service1: # the name of the service that will be known by the docker engine
+    build: serv1 # the folder that contains the dockerfile
+    ports:
+      - "9001:9001" # port of local machine mapped with port from the container
+  service2: # the name of the service that will be known by the docker engine
+    build: serv2 # the folder that contains the dockerfile
+    ports:
+      - "9002:9002" # port of local machine mapped with port from the container      

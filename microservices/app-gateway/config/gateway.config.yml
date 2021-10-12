@@ -1,0 +1,58 @@
+http:
+  port: 9080 # default http port
+admin:
+  port: 9876 # admin user access port
+  host: localhost
+apiEndpoints: # the collection of the API URLs to redirect the request to actula API
+  api: # defualt gateway API
+    host: localhost
+    paths: '/ip'
+  serviceone: # servie 1
+    host: localhost
+    paths: ['/api/emps', '/api/emps/*']  # defining URL paths to call Endpoint
+  servicetwo: # service 2
+    host: localhost
+    paths: ['/api/pers', '/api/pers/*']  # defining URL paths to call Endpoint
+serviceEndpoints: # the actual http paths for the microservices
+  httpbin:
+    url: 'https://httpbin.org'
+  serviceOne: # the actula service behind the gateway
+    url: 'http://localhost:9001' # actula URL of the service behind the gateway
+  serviceTwo: # the actula service behind the gateway
+    url: 'http://localhost:9002' # actula URL of the service behind the gateway  
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+pipelines: # this is how the gateway will connect to the actual service
+  default:
+    apiEndpoints:
+      - api
+    policies:
+    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+    # - key-auth:
+      - proxy:
+          - action:
+              serviceEndpoint: httpbin 
+              changeOrigin: true
+  serviceOnePipeline: # request pipeline for the actual service to which gateway wil route the request
+    apiEndPoints:
+      - serviceone # apiEndpoint configuration name
+    policies:
+      - proxy:
+          - action: # the actual routing to the address
+              serviceEndpoint: serviceOne
+              changeOrigin: true
+  serviceTwoPipeline: # request pipeline for the actual service to which gateway wil route the request
+    apiEndPoints:
+      - servicetwo # apiEndpoint configuration name
+    policies:
+      - proxy:
+          - action: # the actual routing to the address
+              serviceEndpoint: serviceTwo
+              changeOrigin: true            
