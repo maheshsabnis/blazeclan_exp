@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress # the gateway configuration
+metadata:
+  name: api-ingress
+  annotations:  # the standard gateway configurations
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    kubernetes.io/ingress.class: nginx # the default gateway service by K8S
+spec: # the gateway configuration
+  rules: # the gateway url rules
+  - http:
+      paths:
+        - pathType: Prefix
+          path: /api/emps
+          backend:
+            service:
+              name:  node-serv1-service # deployed service name
+              port:
+                number:  9001  # external port of the service
+        - pathType: Prefix
+          path: /api/pers
+          backend:
+            service:
+              name:  node-serv2-service
+              port:
+                number:  9002    

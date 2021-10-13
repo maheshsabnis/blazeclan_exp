@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment  
+metadata:
+  name: node-serv1-deployment  
+spec:
+  selector:
+    matchLabels:
+      app: node-serv1-pod  # the POD name
+  template: # the POD COnfiguration
+    metadata:
+      labels: 
+        app:  node-serv1-pod # the POD that will be created with containers in it
+    spec: # define specifications for containers
+      containers:
+      - name: node-serv1-container # container name
+        image:  mast007/b2serv1:v1 # image to be loaded in the container
+        resources:  # define CPU and memory
+          limits:
+            cpu: "500m" # 0.5 CPU
+            memory: "128Mi" # 128mb
+        ports:  # ports exposed by the container
+          - name: http
+            containerPort:  9001    
+---
+# the service configuration in the container which will be created in the pod
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app:  app-k8s-service # the name of the deployment service used for discovery by the K8S sluster service
+  name: node-serv1-service  # the name of the service 
+spec: # the service specification, The external Public port, internal port and loadbalancer
+  ports:  # the external port and internal port   
+    - protocol: TCP # for internal communication
+      port: 9001 # external port
+      name: http # refer the containerPort name from the deployment section
+      targetPort: 9001 # container port
+  selector: # name of the POD where the container is hosting the service
+    app:  node-serv1-pod
+  type: ClusterIP                    
+                

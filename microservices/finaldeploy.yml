@@ -1,0 +1,50 @@
+# a single deploymenht file for all containers and its services
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finaldeploy
+spec:
+  replicas: 4 # create 4 replicas of the POD
+  selector:
+    matchLabels:
+      name: finaldeploy
+  template:
+    metadata:
+      labels:
+        name: finaldeploy
+    spec:
+      containers:
+        - name: service1container
+          image: mast007/b2serv1:v1
+          resources:
+            limits:
+              cpu: "500m" # 0.5 CPU
+              memory: "128Mi" # 128 mb
+          ports:
+            - name: http  # since multiple service provide unique name to internalm port for each service
+              containerPort: 9001
+        - name: service2container
+          image: mast007/b2serv2:v1
+          resources:
+            limits:
+              cpu: "500m" # 0.5 CPU
+              memory: "128Mi" # 128 mb
+          ports:
+            - name: http-second # since multiple service provide unique name to internalm port for each service
+              containerPort: 9002
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: finaldeploy
+spec:
+  selector:
+     name: finaldeploy
+  ports:
+    - name: http  # unique name for external port
+      port: 9001
+      targetPort: http # refer the internal potr from the deployment section
+    - name: http-second # unique name fir external port
+      port: 9002
+      targetPort: http-second # refer the internal potr from the deployment section
+  type: LoadBalancer # allows the public access of the service    

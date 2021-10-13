@@ -1,0 +1,27 @@
+# deployment file for configuring the POD(s), Container(s), Port(s), etc.
+apiVersion: apps/v1
+kind: Deployment # the POD deployment configuration
+metadata:
+  name: node-serv2-deployment # name of the deployment
+  namespace:  default # the default namespace for cluster
+  labels:
+    app:  node-serv2-deployment # deployment name used bu k8s for discovery
+spec: # the deployment specifications with Pods and containers
+  selector: # the key that is used to define discovery value for the PODs and its deployment
+    matchLabels:
+      app:  node-serv2-pod  # the POD name
+  template: # the POD COnfiguration
+    metadata:
+      labels: 
+        app:  node-serv2-pod # the POD that will be created with containers in it
+    spec: # define specifications for containers
+      containers:
+      - name: node-serv2-container # container name
+        image:  mast007/b2serv2:v1 # image to be loaded in the container
+        resources:  # define CPU and memory
+          limits:
+            cpu: "500m" # 0.5 CPU
+            memory: "128Mi" # 128mb
+        ports:  # ports exposed by the container
+          - containerPort:  9002    
+                

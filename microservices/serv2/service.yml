@@ -1,0 +1,15 @@
+# the service configuration in the container which will be created in the pod
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app:  app-k8s2-service # the name of the deployment service used for discovery by the K8S sluster service
+  name: node-serv2-service  # the name of the service 
+spec: # the service specification, The external Public port, internal port and loadbalancer
+  ports:  # the external port and internal port   
+    - port: 5002 # expternal port
+      targetPort: 9002 # container port
+  selector: # name of the POD where the container is hosting the service
+    app:  node-serv2-pod
+  type: LoadBalancer # allows the public communication        

@@ -259,7 +259,10 @@
 VERY IMP ****
     - a single file can be created for deployment and service
 
-
+# To prvent the direct access of the Microservices use the Gateways
+    - K8S provides ingress service 
+        - USed to act as a gateway to provide an access of the microservices over a signle entry-point
+    - To use the INgress, make sure that the service uses 'type' as 'ClusterIP' than using 'LoadBalancer'    
 
 
 
