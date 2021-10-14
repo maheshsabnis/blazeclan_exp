@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: node-serv2-deployment
+  namespace: default
 spec:
   selector:
     matchLabels:
@@ -33,10 +34,10 @@ metadata:
 spec: # the service specification, The external Public port, internal port and loadbalancer
   ports:  # the external port and internal port   
     - protocol: TCP
-      port: 9002 # expternal port
+      port: 80 # expternal port
       name: http # refer the containerPort name from the deployment section
       targetPort: 9002 # container port
   selector: # name of the POD where the container is hosting the service
     app:  node-serv2-pod
-  type: ClusterIP        
+  type: LoadBalancer        
                 
