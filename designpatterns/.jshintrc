@@ -1,0 +1,10 @@
+/*
+  
+*/
+
+{
+    "undef":true, /* The varibale MUST be declared*/
+    "unused":true, /* the unused variabled and functions MUST bne reported */
+    "esversion": 6, /* the support for ES 6 code e.g. template string MUST be enabled*/
+    "node":true /* support for Node.js standards e.g. require(), console(), etc*/
+}
