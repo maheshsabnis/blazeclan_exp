@@ -143,3 +143,36 @@
         - Redux apps
             - Reducers
                 - A Central Authority that is used to manage the actions from all participants (Components), and based upon these actions the state will be updated and shared across all other participants   
+7. Facade Pattern
+    - WHen a Client Calls am method, then if the method execution goes through several Complex Workflows, then saggrigate each complex Wrokflow in Separate implementation and then COmbine it together in one signle 'FACADE' 
+    - Use Case  
+        - Providing Acces Rights to the User to Access a specific set of functionality
+            - Check If User Exists
+                - Required in USer Registration
+                - Login Process 
+            - Check if Password Match
+                - Password Validators
+                - Login Process
+            - Check the Role for the User
+                - New Role Creation
+                - Assigning Role for User
+                - Login Process
+            - Check if the Role has Access Rights
+                - Login Process
+                - Aothorization Process
+        - Client----> Submit Credentials (UserName, Password) ----> Workflow to be executed ----> Result if Access id Granted or Rejected     
+
+        - RegisterUser() {Check for User Already Exist}
+        - LoginUSer() {Check For USer Already Exist, Check If PAssword Match, Check ROle for User, Check Access Rights of Role}
+        - RegisterRole(){Check if Role Exist}
+        - AssignRoleToUser(){Check If user Exist, Check If Role Exist}
+        - GRantAccess(){Check USer Exist, Check User Login, Check Role Exist, Check Role for User, Check Access Rights of the User}
+8. Command Pattern
+    - If the actual event-handlers to be hidden from the object raising the event then use the 'Command Pattern'
+        - btn.addEventListener('click', this.clickMe);
+            - Subject, btn
+            - Handlers, this.clickMe
+            - Observer, click event
+    - Command Pattern is used to create a layer of encapsulation which will decide about the function to be executed based on event dispatched by the Object
+        - Object Dispatching Event ----> Command Listen to Event and receive parameters ----> Decides which method to execute   
+    - The Redux with userDispatch() or mapDispatchToProps() actually act as a command pattern     
