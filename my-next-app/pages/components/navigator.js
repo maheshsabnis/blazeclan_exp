@@ -17,6 +17,11 @@ const Navigator = () => {
                 <a>First Component</a>
               </Link>
             </th>
+            <th  className={styles.th}>
+              <Link href="/components/callAjax">
+                <a>Ajax Call</a>
+              </Link>
+            </th>
           </tr>
         </thead>
       </table>

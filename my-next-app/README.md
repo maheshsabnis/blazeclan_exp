@@ -54,4 +54,20 @@
         });
         - ON the receiver component, agsin use 'useRouter', declare its object and in 'useEffect', the value can be read as 
             - router.query.[KEY]                  
-                
+- Server-Side AJAX Calls
+    - Server-Side Rendering of the HTML and The JSOn Data for it
+    - The 'getStatProps()' a method that is written to fetch the data during compile time 
+    - THis method is executed in server-side and not on client side
+    - When to use this?
+        - If the Data MUST be ready before the rendering of the component then use getStaticProps()
+        - If The static HTML and JSON to be generaed for responsive UI rendering then use this method  
+
+- Dynamic Routing           
+    - In Next.js the routing is handled using the following workflow
+        - The '/' (root) is mmaped with 'pages' folder
+        - When the Link href is as below
+            - /mycomponent
+                - The Router will look for the 'mycomponent.js' component file in 'pages' folder, if this file is found the component defined in mycomponent.js will be rendered
+                - If the 'mycomponent.js' file is not found, then error will be shown     
+                - The next.js routing will match the URL against a regular expression and search for the component js file
+    - The DYnamic Routing that will decide the routing component and its data based on regular expression defined in 'href'
