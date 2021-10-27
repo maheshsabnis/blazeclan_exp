@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="jquery.min.js"></script>
     <script src="myfile.js"></script>
     <script src="./call.js"></script>
     <script>
@@ -36,6 +37,23 @@
                 document.getElementById('dvdata').innerHTML = 'Error'; 
                });
             },false);
+
+            $("#b1").on('click',function(){
+                let cust = {
+                    CustId: $("#custid").val(),
+                    CustName:$("#custname").val()
+                };
+                $.ajax({
+                   url: 'http://localhost:7081/api/customers',
+                   type:'POST',
+                   data: JSON.stringify(cust),
+                   contentType:'application/json' 
+                }).done(function(res){
+                    console.log(res)
+                }).fail(function(err){
+                    console.log(err);
+                });
+            });
         }
     </script>
 </head>
@@ -65,6 +83,13 @@
     <input type="button" value="Get Data" id="btng">
     <br>
     <input type="button" value="Post Data" id="btnp">
+    <hr/>
+    Enter Some Data <input type="text" id="custid">
+    <br>
+    Enter Some Data <input type="text" id="custname">
+    
+    <br>
+    <input type="button" value="Send Data" id="b1">
     <hr>
     <div id="dvdata"></div>
 </body>

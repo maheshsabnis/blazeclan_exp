@@ -10,6 +10,9 @@ const instance = express();
 instance.use(
     express.static(path.join(__dirname, './../../node_modules/bootstrap/dist/css'))
 );
+instance.use(
+    express.static(path.join(__dirname, './../../node_modules/jquery/dist'))
+);
 // define a statif file middleware for JS files from Views folder
 instance.use(
     express.static(path.join(__dirname, './../views'))
